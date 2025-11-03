@@ -1,0 +1,1265 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Harvel Electronic </title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+     
+    <style>
+      :root {
+     
+    --primary-bg: white; /* Changed from #1a1a1a to a slightly softer dark gray */
+    --secondary-bg: Black; /* Slightly lighter dark for cards and nav */
+    --gold-accent: #DAA520; /* Gold color */
+    --text-color: #f0f0f0; /* Light text */
+    --white-btn-bg: #ffffff; /* White for button background */
+    --btn-text-color: #1a1a1a; /* Dark text for white button */
+
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+ /* --- Navbar Styling --- */
+.main-navbar {
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--gold-accent);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold-accent);
+    font-size: 1.8em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+ .store-logo {
+    height: 40px; /* Adjust height as needed */
+    width: 40px;  /* Make width equal to height for a perfect circle */
+    border-radius: 50%; /* This makes it circular */
+    object-fit: cover; /* Ensures the image fills the circle without distortion */
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7)); /* Optional: Add a subtle shadow to the logo */
+}
+
+/* Also update the responsive part if you have it for smaller screens */
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.5em;
+    }
+    .store-logo {
+        height: 30px; /* Smaller logo on small screens */
+        width: 30px;  /* Match width to height */
+    }
+}
+
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: var(--gold-accent);
+    text-shadow: 0 0 8px var(--gold-accent);
+}
+
+.cart-icon-container {
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.cart-nav-icon {
+    color: var(--gold-accent);
+    font-size: 2em;
+    transition: transform 0.3s ease;
+}
+
+.cart-icon-container:hover .cart-nav-icon {
+    transform: scale(1.1);
+}
+
+.cart-count {
+    background-color: #e74c3c; /* Red for count */
+    color: white;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 20px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+/* --- Secondary Navbar Styling --- */
+.secondary-navbar {
+    background-color: #333; /* Slightly different dark shade */
+    border-bottom: 1px solid rgba(218, 165, 32, 0.5);
+    padding: 10px 30px;
+    text-align: center;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.secondary-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.secondary-navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 3px;
+}
+
+.secondary-navbar a:hover {
+    color: var(--gold-accent);
+    background-color: #444;
+}
+
+/* --- Product Grid Styling --- */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--gold-accent);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    padding-bottom: 15px; /* Added padding to ensure card content fits well */
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-accent);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    display: flex; /* Use flex to center image within */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--text-color); /* White background for image area */
+}
+
+.product-image img {
+    max-width: 100%; /* Ensure image doesn't overflow */
+    max-height: 100%; /* Ensure image doesn't overflow */
+    object-fit: contain; /* Shows entire image */
+    transition: transform 0.5s ease;
+    background-color: var(--text-color); /* Fallback for transparency */
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1); /* Zoom effect */
+}
+
+.product-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-title {
+    color: var(--gold-accent);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.product-price {
+    font-size: 1.2em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.add-to-cart-btn {
+    background-color: var(--white-btn-bg);
+    color: var(--btn-text-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    width: fit-content; /* Adjust button width to content */
+    margin: 0 auto; /* Center the button */
+}
+
+.add-to-cart-btn span {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.add-to-cart-btn .cart-icon {
+    opacity: 0; /* Initially invisible */
+    transform: translateX(20px); /* Start off-screen */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 1.2em;
+    position: absolute;
+    right: 15px; /* Adjust to position the icon */
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--gold-accent);
+    color: var(--white-btn-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-to-cart-btn:hover span {
+    transform: translateX(-15px); /* Move text to the left */
+}
+
+.add-to-cart-btn:hover .cart-icon {
+    opacity: 1; /* Make visible */
+    transform: translateX(0); /* Bring to original position */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .product-card {
+        width: calc(33% - 40px); /* 3 cards per row with gap */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .navbar-links {
+        margin-top: 15px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .cart-icon-container {
+        margin-top: 15px;
+    }
+    .secondary-navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .product-card {
+        width: calc(50% - 30px); /* 2 cards per row with gap */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.5em;
+    }
+    .store-logo {
+        height: 30px;
+    }
+    .navbar-links a {
+        font-size: 1em;
+    }
+    .secondary-navbar a {
+        font-size: 0.9em;
+    }
+    .product-card {
+        width: 90%; /* Single card per row */
+    }
+    .product-title {
+        font-size: 1.3em;
+    }
+    .product-price {
+        font-size: 1.1em;
+    }
+    .add-to-cart-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* --- Mini Cart Dropdown Styling --- */
+.mini-cart-dropdown {
+    position: absolute;
+    top: 60px; /* Adjust based on navbar height */
+    right: 0;
+    width: 300px; /* Adjust width as needed */
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--gold-accent);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    z-index: 1000; /* Ensure it's above everything else */
+    padding: 15px;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mini-cart-dropdown.show {
+    display: block; /* Show when 'show' class is added by JS */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mini-cart-dropdown h4 {
+    color: var(--gold-accent);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+    padding-bottom: 10px;
+}
+
+.cart-items-list {
+    max-height: 300px; /* Scrollable if many items */
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 5px; /* Space for scrollbar */
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 5px;
+    background-color: var(--text-color); /* White background for image */
+    padding: 2px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    color: var(--text-color);
+}
+
+.cart-item-details h5 {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--gold-accent);
+}
+
+.cart-item-details p {
+    margin: 2px 0;
+    font-size: 0.8em;
+}
+
+.remove-item-btn {
+    background-color: #f22008; /* Red */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 0.75em;
+    transition: background-color 0.2s ease;
+}
+
+.remove-item-btn:hover {
+    background-color: #f32008; /* Darker red */
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: #aaa;
+    font-style: italic;
+    padding: 20px;
+}
+
+.cart-summary {
+    border-top: 1px solid rgba(218, 165, 32, 0.3);
+    padding-top: 15px;
+    text-align: right;
+}
+
+.cart-summary p {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cart-total {
+    color: var(--gold-accent);
+}
+
+.checkout-btn {
+    background-color: var(--gold-accent);
+    color: var(--btn-text-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: gold; /* Darker gold */
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustment for mini-cart on smaller screens */
+@media (max-width: 480px) {
+    .mini-cart-dropdown {
+        width: 90%; /* Take up more width */
+        left: 5%; /* Center it roughly */
+        right: 5%;
+        transform: translateY(-10px) translateX(0); /* Remove right offset */
+    }
+}
+  /* Footer section */
+.footer {
+  background-color: #000;
+  color: #f5f5f5;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Title */
+.footer-title {
+  color: #FFD700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Footer Items */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-item:hover {
+  color: #FFD700;
+}
+
+.footer-item i {
+  color: #FFD700;
+}
+
+/* Social Icons */
+.footer-social p {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  background: #111;
+  border: 1px solid #FFD700;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background: #FFD700;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Center Links */
+.footer-center h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li {
+  margin: 10px 0;
+}
+
+.footer-center ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-center ul li a:hover {
+  color: #FFD700;
+  padding-left: 5px;
+}
+
+/* Subscribe */
+.footer-right h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-right p {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.subscribe-form button {
+  background: #FFD700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+ /*  */
+ /* make footer a positioned container */
+.footer {
+  position: relative; /* already present? ensure this */
+  padding-bottom: 50px; /* give space so credit doesn't overlap content */
+}
+
+/* place credit exactly at bottom center of the footer */
+.footer-credit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;          /* distance from footer bottom; adjust to taste */
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #777;           /* keeps existing style */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    min-width: 100%;
+  }
+
+  .footer-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input, .subscribe-form button {
+    width: 100%;
+  }
+}
+
+ .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 2px 10px 14px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    z-index: 1000;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover Effect */
+.whatsapp-button:hover {
+    transform: translateY(-6px);
+    box-shadow: 2px 8px 20px rgba(0,0,0,0.4);
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+/* Text */
+.whatsapp-text {
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Responsive for small screens (mobile) */
+@media (max-width: 480px) {
+    .whatsapp-button {
+        padding: 10px 14px;
+    }
+    .whatsapp-text {
+        font-size: 14px;
+    }
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 6px;
+    }
+}
+ 
+
+.pagination-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.next-page-btn {
+  background-color: #000;
+  color: gold; /* gold */
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.next-page-btn:hover {
+  background-color: gold;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Main Navigation Bar -->
+    <nav class="main-navbar">
+        <div class="navbar-brand">
+            <img src="./pics folder/logo ad1.jpg" alt="Your Store Logo" class="store-logo">
+            <span>Harvel Electronic</span>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div class="cart-icon-container">
+            <i class="fas fa-shopping-cart cart-nav-icon"></i>
+            <span class="cart-count">0</span>
+
+            <!-- Mini Cart Dropdown (New HTML) -->
+            <div class="mini-cart-dropdown">
+                <h4>Cart</h4>
+                <div class="cart-items-list">
+                    <!-- Cart items will be injected here by JavaScript -->
+                    <p class="empty-cart-message">Your cart is empty.</p>
+                </div>
+                <div class="cart-summary">
+                    <p>Total: $<span class="cart-total">0.00</span></p>
+                    <button class="checkout-btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Cards Section -->
+    <section class="products-grid">
+        <!-- Product Card 1 -->
+        <div class="product-card" data-product-id="p1">
+            <div class="product-image">
+                <img src="./pics folder/kit3.jfif" alt="Elegant Gold Watch">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Elegant Gold Watch</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$299.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="product-card" data-product-id="p2">
+            <div class="product-image">
+                <img src="./pics folder/kit5.jfif" alt="Luxury Black Ring">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Luxury Black Ring</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$149.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card" data-product-id="p3">
+            <div class="product-image">
+                <img src="pics folder/mobile6.gif" alt="Golden Cufflinks Set">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Golden Cufflinks Set</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$89.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="product-card" data-product-id="p4">
+            <div class="product-image">
+                <img src="./pics folder/mobile7.jpg" alt="Designer Black Handbag">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Designer Black Handbag</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$399.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 5 -->
+        <div class="product-card" data-product-id="p5">
+            <div class="product-image">
+                <img src="./pics folder/mobile8.jpg" alt="Vintage Gold Necklace">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Vintage Gold Necklace</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$199.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 6 -->
+        <div class="product-card" data-product-id="p6">
+            <div class="product-image">
+                <img src="pics folder/watch12.jpg" alt="Sleek Black Sunglasses">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Sleek Black Sunglasses</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$79.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 7 -->
+        <div class="product-card" data-product-id="p7">
+            <div class="product-image">
+                <img src="./pics folder/watch9.jpg" alt="Premium Gold Pen">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Premium Gold Pen</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$59.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 8 -->
+        <div class="product-card" data-product-id="p8">
+            <div class="product-image">
+                <img src="pics folder/watch5.jpg" alt="Modern Black Wallet">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Modern Black Wallet</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$69.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 9 -->
+        <div class="product-card" data-product-id="p9">
+            <div class="product-image">
+                <img src="pics folder/watch7.jpg" alt="Emerald Gold Earrings">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Emerald Gold Earrings</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$249.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 10 -->
+        <div class="product-card" data-product-id="p10">
+            <div class="product-image">
+                <img src="pics folder/mobile8.jpg" alt="Minimalist Black Lamp">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Minimalist Black Lamp</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$129.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 11 -->
+        <div class="product-card" data-product-id="p11">
+            <div class="product-image">
+                <img src="pics folder/mobile.1.gif" alt="Diamond Gold Bracelet">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Diamond Gold Bracelet</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$599.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 12 -->
+        <div class="product-card" data-product-id="p12">
+            <div class="product-image">
+                <img src="pics folder/mobile2.gif" alt="Luxury Black Phone Case">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Luxury Black Phone Case</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$39.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 13 -->
+        <div class="product-card" data-product-id="p13">
+            <div class="product-image">
+                <img src="pics folder/mobile11.jpg" alt="Classic Gold Brooch">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Classic Gold Brooch</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$119.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 14 -->
+        <div class="product-card" data-product-id="p14">
+            <div class="product-image">
+                <img src="pics folder/mobile7.jpg" alt="Elegant Black Scarf">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Elegant Black Scarf</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$49.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 15 -->
+        <div class="product-card" data-product-id="p15">
+            <div class="product-image">
+                <img src="pics folder/mobile13.jpg" alt="Gold Plated Frame">
+            </div>
+            <div class="product-details">
+                <h3 class="product-title">Gold Plated Frame</h3>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="product-price">$79.99</p>
+                <button class="add-to-cart-btn">
+                    <span>Add to Cart</span> <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        </section>
+
+         <div class="pagination-container">
+  <a href="page2.html" class="next-page-btn">Next Page &raquo;</a>
+</div>
+
+
+    <!-- FOOTER SECTION  -->
+    <footer class="footer">
+  <div class="footer-container">
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2 class="footer-title">Harvel Electronics</h2>
+
+      <div class="footer-item">
+        <i class="fas fa-home"></i>
+        <span class="footer-text">Main Shara-e-Faisal Business Aveneu 75760 Karachi Pakistan</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-clock"></i>
+        <span class="footer-text">Mon – Sat: 9:00 AM – 10:00 PM</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-phone-alt"></i>
+        <span class="footer-text">+92 3480360061</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-envelope"></i>
+        <span class="footer-text">jbadil007@gmail.com</span>
+      </div>
+
+      <div class="footer-social">
+        <p>Follow Us:</p>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="shopbybrand.html">Shop by Brands</a></li>
+        <li><a href="customerreviews.html">Customer Reviews</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE (SUBSCRIBE) -->
+    <div class="footer-right">
+      <h3>Subscribe Now</h3>
+      <p>Get updates on latest offers & new arrivals.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="footer-credit">© 2025 Harvel Electronics | Designed by Adil</p>
+    </div>
+  </div>
+</footer>
+
+
+     <!-- WHATSAPP ICON BTN  -->
+
+     <!-- Professional Responsive WhatsApp Floating Button Start -->
+<a href="https://api.whatsapp.com/send?phone=92+3480360061&text=Hello%20there!" 
+   target="_blank"
+   class="whatsapp-button">
+   
+   <!-- WhatsApp Icon -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="whatsapp-icon">
+     <path d="M13.601 2.326a7.564 7.564 0 0 0-5.356-2.09c-4.194 0-7.592 3.398-7.592 7.592 0 1.34.35 2.643 1.016 3.795L.007 16l4.445-1.15a7.548 7.548 0 0 0 3.693.984c4.194 0 7.592-3.398 7.592-7.592 0-2.03-.79-3.937-2.136-5.411Zm-5.356 12.174a6.448 6.448 0 0 1-3.317-.915l-.237-.14-2.634.68.703-2.566-.155-.266a6.443 6.443 0 0 1-1.014-3.227c0-3.57 2.9-6.47 6.47-6.47 1.727 0 3.354.67 4.575 1.886a6.44 6.44 0 0 1 1.89 4.58c0 3.57-2.9 6.47-6.47 6.47Zm3.545-4.798c-.195-.097-1.154-.57-1.334-.635-.18-.066-.312-.097-.443.097-.13.195-.505.635-.62.766-.114.13-.23.146-.426.05-.195-.097-.823-.303-1.565-.963-.578-.515-.97-1.15-1.084-1.345-.114-.195-.012-.3.086-.397.088-.087.195-.23.292-.345.097-.114.13-.195.195-.325.065-.13.033-.244-.016-.342-.05-.097-.443-1.067-.607-1.462-.16-.385-.322-.33-.443-.336l-.38-.007c-.13 0-.342.05-.522.244-.18.195-.69.675-.69 1.642 0 .966.708 1.9.807 2.03.097.13 1.395 2.125 3.375 2.982 2.38 1.044 2.38.695 2.81.653.43-.04 1.395-.57 1.59-1.123.195-.553.195-1.026.136-1.123-.065-.097-.24-.13-.436-.227Z"/>
+   </svg>
+
+   <!-- Text -->
+   <span class="whatsapp-text">Message Us</span>
+</a>
+
+
+    <!-- Custom JavaScript -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const cartCountSpan = document.querySelector('.cart-count');
+    const cartIconContainer = document.querySelector('.cart-icon-container');
+    const miniCartDropdown = document.querySelector('.mini-cart-dropdown');
+    const cartItemsList = document.querySelector('.cart-items-list');
+    const cartTotalSpan = document.querySelector('.cart-total');
+    const emptyCartMessage = document.querySelector('.empty-cart-message');
+
+    // --- Cart Toggle Functionality ---
+    cartIconContainer.addEventListener('click', (event) => {
+        // Prevent click on cart button from closing dropdown immediately
+        if (!event.target.closest('.add-to-cart-btn') && !event.target.closest('.remove-item-btn') && !event.target.closest('.checkout-btn')) {
+            miniCartDropdown.classList.toggle('show');
+            renderCartItems(); // Re-render cart items every time it's opened
+        }
+    });
+
+    // Close mini-cart if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!cartIconContainer.contains(event.target) && !miniCartDropdown.contains(event.target)) {
+            miniCartDropdown.classList.remove('show');
+        }
+    });
+
+
+    // --- Add to Cart Functionality ---
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productCard = event.target.closest('.product-card');
+            const productId = productCard.dataset.productId;
+            const productTitle = productCard.querySelector('.product-title').textContent;
+            const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+            const productImage = productCard.querySelector('.product-image img').src;
+
+            const product = {
+                id: productId,
+                title: productTitle,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            };
+
+            addToCart(product);
+            alert(`${productTitle} added to cart!`); // Simple feedback
+        });
+    });
+
+    // Function to add product to local storage cart
+    function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+        if (existingProductIndex > -1) {
+            cart[existingProductIndex].quantity += 1;
+        } else {
+            cart.push(product);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+        renderCartItems(); // Also re-render mini-cart after adding
+    }
+
+    // Function to remove product from local storage cart
+    function removeFromCart(productId) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart = cart.filter(item => item.id !== productId); // Remove item with matching ID
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+        renderCartItems(); // Re-render mini-cart after removing
+    }
+
+    // Function to update the cart count in the navbar
+    function updateCartDisplay() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountSpan.textContent = totalItems;
+    }
+
+    // Function to render items inside the mini-cart dropdown
+    function renderCartItems() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cartItemsList.innerHTML = ''; // Clear previous items
+
+        let total = 0;
+
+        if (cart.length === 0) {
+            emptyCartMessage.style.display = 'block';
+        } else {
+            emptyCartMessage.style.display = 'none';
+            cart.forEach(item => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="cart-item-details">
+                        <h5>${item.title}</h5>
+                        <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
+                    </div>
+                    <button class="remove-item-btn" data-product-id="${item.id}">Remove</button>
+                `;
+                cartItemsList.appendChild(cartItemElement);
+
+                total += item.price * item.quantity;
+            });
+        }
+
+        cartTotalSpan.textContent = total.toFixed(2);
+
+        // Add event listeners to newly rendered remove buttons
+        document.querySelectorAll('.remove-item-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productId = event.target.dataset.productId;
+                removeFromCart(productId);
+            });
+        });
+    }
+
+    // Initial calls when the DOM is loaded
+    updateCartDisplay(); // Update cart count from local storage
+    // renderCartItems(); // No need to render immediately, only when opened
+});
+    </script>
+</body>
+</html>

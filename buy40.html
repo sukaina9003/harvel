@@ -1,0 +1,285 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Elite ChronoX Gold Edition | Adil Gold</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: radial-gradient(circle at center, #0a0a0a 10%, #000 80%);
+      overflow: hidden;
+    }
+
+    .container {
+      background-color: rgba(20, 20, 20, 0.95);
+      border: 2px solid gold;
+      border-radius: 24px;
+      padding: 50px 40px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .container h1 {
+      color: gold;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    .product-summary {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .product-summary img {
+      width: 120px;
+      border-radius: 16px;
+      border: 1px solid gold;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .product-summary p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      background: #111;
+      color: #fff;
+      font-size: 1rem;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: gold;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+
+    .confirm-btn {
+      margin-top: 15px;
+      padding: 14px;
+      background: linear-gradient(to right, #b8860b, gold);
+      border: none;
+      color: black;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .confirm-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .back-link a {
+      color: gold;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #fff;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      color: gold;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    /* ===== Loader Overlay ===== */
+    .loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
+      z-index: 999;
+    }
+
+    .loader-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .loader {
+      border: 5px solid rgba(255, 215, 0, 0.3);
+      border-top: 5px solid gold;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    .loader-text {
+      color: gold;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 40px 25px;
+      }
+      .container h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Complete Your Purchase</h1>
+
+    <div class="product-summary">
+      <img src="./pics folder/machine5.jpg" alt="Elite ChronoX Watch">
+      <p><strong>Dawlance AWM 1165 PL Automatic Machine </strong><br>Rs. 76,999</p>
+    </div>
+
+    <form onsubmit="return handleSubmit(event)">
+      <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div>
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" placeholder="Enter your address" required>
+      </div>
+
+      <div>
+        <label for="payment">Payment Method</label>
+        <select id="payment" required>
+          <option value="">Select</option>
+          <option value="credit">Credit / Debit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="crypto">Crypto (USDT, BTC, ETH)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="confirm-btn">Confirm Purchase</button>
+    </form>
+
+    <div class="back-link">
+      <a href="enter5.html">← Back to Product</a>
+    </div>
+  </div>
+
+  <footer>© 2025 Harvel Electronic . Design By Adil.</footer>
+
+  <!-- ====== Loader Overlay ====== -->
+  <div class="loader-overlay" id="loader">
+    <div class="loader"></div>
+    <div class="loader-text">Processing your order...</div>
+  </div>
+
+  <script>
+    // Processing animation before redirect
+    function handleSubmit(event) {
+      event.preventDefault();
+      const loader = document.getElementById('loader');
+      loader.classList.add('active');
+
+      // Redirect after animation delay
+      setTimeout(() => {
+        window.location.href = "thankyou.html";
+      }, 4000); // 4 seconds of processing
+      return false;
+    }
+  </script>
+
+</body>
+</html>

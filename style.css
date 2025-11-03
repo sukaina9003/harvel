@@ -1,0 +1,2155 @@
+/* Custom Colors */
+:root {
+    --harvel-gold: #FFC300; 
+    --harvel-black: #000000;
+    --harvel-dark-bg: #111111;
+      
+}
+body{
+    background-color: #F5F5F5;
+    color: black;
+}
+
+/* Base Navbar Styling */
+.harvel-navbar {
+    background-color: var(--harvel-dark-bg);
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid var(--harvel-gold);
+}
+
+
+/* Logo Styling */
+.harvel-logo {
+    height: 50px; /* Adjust size as needed */
+    width: 50px;
+    margin-right: 0.5rem;
+    object-fit: contain; /* Ensures the logo fits well */
+    border-radius: 23px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: var(--harvel-gold) !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Navbar Links Styling & Hover Effect */
+.nav-link {
+    color: #ffffff !important; /* Default link color white */
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;
+    gap: space between;
+}
+
+.nav-link:hover {
+    color: var(--harvel-black) !important; /* Text color on hover */
+    background-color: var(--harvel-gold); /* Background color on hover */
+    box-shadow: 0 0 10px rgba(255, 195, 0, 0.5);
+    transform: translateY(-1px); /* Slight lift effect */
+    border-radius: 20px;
+}
+
+/* Cart Link Specific Styling (to make the count stand out) */
+.harvel-cart-link .nav-link,
+.harvel-cart-mobile {
+    color: var(--harvel-gold) !important;
+    font-weight: bold;
+}
+
+.harvel-cart-link .nav-link:hover,
+.harvel-cart-mobile:hover {
+    background-color: var(--harvel-gold);
+    color: var(--harvel-black) !important;
+}
+
+/* Hamburger Menu Toggler */
+.navbar-toggler {
+    border-color: var(--harvel-gold);
+}
+
+.navbar-toggler-icon {
+    /* Custom icon color (often done with a background image, but we can style the container) */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(255, 195, 0)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Offcanvas (Mobile Menu) Styling */
+.harvel-offcanvas {
+    background-color: var(--harvel-dark-bg);
+}
+
+.harvel-offcanvas .offcanvas-header {
+    border-bottom: 1px solid var(--harvel-gold);
+}
+
+.harvel-offcanvas .offcanvas-title {
+    color: var(--harvel-gold);
+}
+
+.harvel-offcanvas .btn-close {
+    filter: invert(1); /* Makes the close button white/visible */
+}
+
+/* Category links in Offcanvas */
+.harvel-category-header {
+    color: var(--harvel-gold) !important;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-bottom: 1px solid rgba(255, 195, 0, 0.5);
+}
+
+.harvel-category-item {
+    padding-left: 1.5rem; /* Indent the specific categories */
+}
+
+
+/* RESPONSIVE Adjustments */
+
+/* Desktop view (>= Large screen) */
+@media (min-width: 992px) {
+    /* Hide mobile cart link */
+    .harvel-cart-mobile {
+        display: none !important;
+    }
+    /* Ensure the logo is on the left with the full name */
+    .navbar-brand {
+        margin-right: auto;
+        margin-left: 0;
+    }
+}
+
+/* Mobile view (< Large screen) */
+@media (max-width: 991.98px) {
+    /* Center the Logo/Brand when responsive */
+    .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        /* Hide the full name, show only logo */
+        font-size: 0;
+    }
+    .navbar-brand .harvel-logo {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+/* SECONDARY NAVBAR Styling */
+.harvel-secondary-navbar {
+    background-color: var(--harvel-dark-bg);
+    border-bottom: 1px solid rgba(255, 195, 0, 0.3); /* Lighter bottom border */
+    padding: 0.3rem 0;
+}
+
+/* Secondary Navbar Links (Dropdown Toggles) */
+.harvel-secondary-navbar .nav-link {
+    color: #cccccc !important; /* Slightly subdued white */
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+}
+
+/* Hover effect for secondary navbar links (same as primary) */
+.harvel-secondary-navbar .nav-link:hover {
+    color: var(--harvel-black) !important; 
+    background-color: var(--harvel-gold); 
+    box-shadow: 0 0 8px rgba(255, 195, 0, 0.5);
+    transform: none; /* Keep links level */
+}
+
+/* Dropdown Menu Styling */
+.harvel-dropdown-menu {
+    background-color: var(--harvel-dark-bg);
+    border: 1px solid var(--harvel-gold);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 0;
+}
+
+/* Dropdown Item Styling */
+.harvel-dropdown-menu .dropdown-item {
+    color: #ffffff;
+    padding: 8px 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Dropdown Item Hover Effect */
+.harvel-dropdown-menu .dropdown-item:hover,
+.harvel-dropdown-menu .dropdown-item:focus {
+    background-color: var(--harvel-gold);
+    color: var(--harvel-black);
+}
+
+/* RESPONSIVE: Hide the secondary navbar on small screens */
+/* Note: The HTML already includes d-none d-lg-flex to hide it on mobile, 
+   as all these categories are already available in the Offcanvas Hamburger Menu. */
+@media (max-width: 991.98px) {
+    .harvel-secondary-navbar {
+        display: none !important;
+    }
+}
+
+/* CAROUSEL/SLIDER Styling */
+.harvel-carousel {
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Image Hover and Animation */
+.harvel-carousel-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease-in-out, filter 0.6s ease-in-out;
+}
+
+/* Zoom/Brightness Hover Effect on the link wrapper */
+.harvel-slide-link:hover .harvel-carousel-img {
+    transform: scale(1.03); 
+    filter: brightness(0.85); 
+}
+
+/* Caption Styling (for large screens) */
+.harvel-caption {
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: #ffffff;
+    border-left: 5px solid var(--harvel-gold);
+    padding: 15px;
+    right: 10%;
+    left: 10%;
+    bottom: 5%;
+    /* Animation for the caption text */
+    transition: transform 0.4s ease-in-out;
+}
+
+.harvel-slide-link:hover .harvel-caption {
+    transform: translateY(-5px); 
+}
+
+.harvel-caption h5 {
+    color: var(--harvel-gold);
+    font-weight: bold;
+}
+
+/* Custom Controls (Arrows) Styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    /* Changing the color of the built-in Bootstrap icon using SVG filter */
+    filter: invert(75%) sepia(80%) saturate(2283%) hue-rotate(334deg) brightness(101%) contrast(98%);
+    background-size: 80%; 
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1; 
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Indicators (Dots) Styling */
+.harvel-carousel .carousel-indicators button {
+    background-color: #cccccc; 
+    border: 1px solid var(--harvel-black);
+}
+
+.harvel-carousel .carousel-indicators button.active {
+    background-color: var(--harvel-gold); 
+    border: 1px solid var(--harvel-gold);
+}
+
+/* ==================================== */
+/* Marquee Container Styles */
+/* ==================================== */
+
+.marquee-container {
+    /* Responsive width */
+    width: 100%; 
+    height: 50px; /* Line ki height */
+    overflow: hidden; 
+    white-space: nowrap; 
+    background-color: #ffcc00; /* Background color */
+    line-height: 50px; /* Text ko center mein rakhe ga */
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    margin-bottom: 10px;
+}
+
+/* Marquee Text Styles */
+.marquee-text {
+    display: inline-block;
+    padding-left: 100%; 
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    color: #000000;
+
+    /* Animation: 20s speed, linear movement, infinite loop */
+    animation: marquee-scroll 40s linear infinite;
+}
+
+/* Hover Effect: Mouse aane par animation rok de */
+.marquee-container:hover .marquee-text {
+    animation-play-state: paused; 
+    cursor: pointer; 
+}
+
+/* Animation Definition */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0%); /* Right se shuru */
+    }
+    100% {
+        transform: translateX(-100%); /* Left ki taraf chale */
+    }
+}
+
+/* ==================================== */
+/* Responsiveness for Mobile */
+/* ==================================== */
+
+@media (max-width: 600px) {
+    .marquee-container {
+         height: 40px;
+         line-height: 40px;
+    }
+    .marquee-text {
+        font-size: 1em; /* Mobile par thora chota font */
+        animation: marquee-scroll 25s linear infinite; 
+    }
+}
+     /* Animation box */
+     
+@media only screen and (min-width: 767px) {
+    .desktop_only {
+        display: block;
+    }
+}
+.vc_row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+ 
+:root {
+    --joinchat-ico: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M3.516 3.516c4.686-4.686 12.284-4.686 16.97 0s4.686 12.283 0 16.97a12 12 0 0 1-13.754 2.299l-5.814.735a.392.392 0 0 1-.438-.44l.748-5.788A12 12 0 0 1 3.517 3.517zm3.61 17.043.3.158a9.85 9.85 0 0 0 11.534-1.758c3.843-3.843 3.843-10.074 0-13.918s-10.075-3.843-13.918 0a9.85 9.85 0 0 0-1.747 11.554l.16.303-.51 3.942a.196.196 0 0 0 .219.22zm6.534-7.003-.933 1.164a9.84 9.84 0 0 1-3.497-3.495l1.166-.933a.79.79 0 0 0 .23-.94L9.561 6.96a.79.79 0 0 0-.924-.445l-2.023.524a.797.797 0 0 0-.588.88 11.754 11.754 0 0 0 10.005 10.005.797.797 0 0 0 .88-.587l.525-2.023a.79.79 0 0 0-.445-.923L14.6 13.327a.79.79 0 0 0-.94.23z'/%3E%3C/svg%3E);
+    --joinchat-font: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
+}
+:root {
+    --site-primary-font: Lato, Arial, Helvetica, sans-serif;
+    --site-font-size: 14px;
+    --site-line-height: 1.9;
+    --primary-color: #F9BF34;
+    --primary-inverse-color: #FFFFFF;
+    --site-text-color: #555555;
+    --site-hover-background-color: #F5FAFF;
+    --site-body-background: #ffffff;
+    --site-link-color: #333333;
+    --site-link-hover-color: #f9bf34;
+    --site-border-top: 1px solid #e9e9e9;
+    --site-border-right: 1px solid #e9e9e9;
+    --site-border-bottom: 1px solid #e9e9e9;
+    --site-border-left: 1px solid #e9e9e9;
+    --site-border-color: #e9e9e9;
+    --site-border-radius: 0;
+    --site-input-background: #ffffff;
+    --site-input-color: #555555;
+}
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1;
+}
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+:host, :root {
+    --fa-family-classic: "Font Awesome 7 Free";
+    --fa-font-solid: normal 900 1em / 1 var(--fa-family-classic);
+    --fa-style-family-classic: var(--fa-family-classic);
+}
+:host, :root {
+    --fa-font-regular: normal 400 1em / 1 var(--fa-family-classic);
+}
+:host, :root {
+    --fa-family-brands: "Font Awesome 7 Brands";
+    --fa-font-brands: normal 400 1em / 1 var(--fa-family-brands);
+}
+:root {
+    --wp--preset--aspect-ratio--square: 1;
+    --wp--preset--aspect-ratio--4-3: 4 / 3;
+    --wp--preset--aspect-ratio--3-4: 3 / 4;
+    --wp--preset--aspect-ratio--3-2: 3 / 2;
+    --wp--preset--aspect-ratio--2-3: 2 / 3;
+    --wp--preset--aspect-ratio--16-9: 16 / 9;
+    --wp--preset--aspect-ratio--9-16: 9 / 16;
+    --wp--preset--color--black: #000000;
+    --wp--preset--color--cyan-bluish-gray: #abb8c3;
+    --wp--preset--color--white: #ffffff;
+    --wp--preset--color--pale-pink: #f78da7;
+    --wp--preset--color--vivid-red: #cf2e2e;
+    --wp--preset--color--luminous-vivid-orange: #ff6900;
+    --wp--preset--color--luminous-vivid-amber: #fcb900;
+    --wp--preset--color--light-green-cyan: #7bdcb5;
+    --wp--preset--color--vivid-green-cyan: #00d084;
+    --wp--preset--color--pale-cyan-blue: #8ed1fc;
+    --wp--preset--color--vivid-cyan-blue: #0693e3;
+    --wp--preset--color--vivid-purple: #9b51e0;
+    --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg, rgba(6, 147, 227, 1) 0%, rgb(155, 81, 224) 100%);
+    --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg, rgb(122, 220, 180) 0%, rgb(0, 208, 130) 100%);
+    --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+    --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg, rgba(255, 105, 0, 1) 0%, rgb(207, 46, 46) 100%);
+    --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg, rgb(238, 238, 238) 0%, rgb(169, 184, 195) 100%);
+    --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg, rgb(74, 234, 220) 0%, rgb(151, 120, 209) 20%, rgb(207, 42, 186) 40%, rgb(238, 44, 130) 60%, rgb(251, 105, 98) 80%, rgb(254, 248, 76) 100%);
+    --wp--preset--gradient--blush-light-purple: linear-gradient(135deg, rgb(255, 206, 236) 0%, rgb(152, 150, 240) 100%);
+    --wp--preset--gradient--blush-bordeaux: linear-gradient(135deg, rgb(254, 205, 165) 0%, rgb(254, 45, 45) 50%, rgb(107, 0, 62) 100%);
+    --wp--preset--gradient--luminous-dusk: linear-gradient(135deg, rgb(255, 203, 112) 0%, rgb(199, 81, 192) 50%, rgb(65, 88, 208) 100%);
+    --wp--preset--gradient--pale-ocean: linear-gradient(135deg, rgb(255, 245, 203) 0%, rgb(182, 227, 212) 50%, rgb(51, 167, 181) 100%);
+    --wp--preset--gradient--electric-grass: linear-gradient(135deg, rgb(202, 248, 128) 0%, rgb(113, 206, 126) 100%);
+    --wp--preset--gradient--midnight: linear-gradient(135deg, rgb(2, 3, 129) 0%, rgb(40, 116, 252) 100%);
+    --wp--preset--font-size--small: 13px;
+    --wp--preset--font-size--medium: 20px;
+    --wp--preset--font-size--large: 36px;
+    --wp--preset--font-size--x-large: 42px;
+    --wp--preset--spacing--20: 0.44rem;
+    --wp--preset--spacing--30: 0.67rem;
+    --wp--preset--spacing--40: 1rem;
+    --wp--preset--spacing--50: 1.5rem;
+    --wp--preset--spacing--60: 2.25rem;
+    --wp--preset--spacing--70: 3.38rem;
+    --wp--preset--spacing--80: 5.06rem;
+    --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+    --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+    --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+    --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+    --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+}
+:root {
+    --rounded-corners-radius: 16px;
+    --add-to-cart-rounded-corners-radius: 16px;
+    --color-headers-background: #F4F4F4;
+    --feedback-duration: 3s;
+}
+:root {
+    --rounded-corners-radius: 16px;
+    --add-to-cart-rounded-corners-radius: 16px;
+    --color-headers-background: #F4F4F4;
+    --feedback-duration: 3s;
+}
+:root {
+    --woocommerce: #720eec;
+    --wc-green: #7ad03a;
+    --wc-red: #a00;
+    --wc-orange: #ffba00;
+    --wc-blue: #2ea2cc;
+    --wc-primary: #720eec;
+    --wc-primary-text: #fcfbfe;
+    --wc-secondary: #e9e6ed;
+    --wc-secondary-text: #515151;
+    --wc-highlight: #958e09;
+    --wc-highligh-text: white;
+    --wc-content-bg: #fff;
+    --wc-subtext: #767676;
+    --wc-form-border-color: rgba(32, 7, 7, 0.8);
+    --wc-form-border-radius: 4px;
+    --wc-form-border-width: 1px;
+}
+:root {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.vc_row:after, .vc_row:before {
+    content: " ";
+    display: table;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+.vc_row:after {
+    clear: both;
+}
+.vc_row:after, .vc_row:before {
+    content: " ";
+    display: table;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+::selection {
+    color: #FFFFFF;
+    background: #F9BF34;
+}
+
+
+/* ==================================== */
+/*
+--- Media Queries for Responsiveness ---
+Adjusts the layout based on screen size
+*/
+
+  
+/* Base Styles for the container */
+.info-blocks-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    padding: 15px; 
+    flex-wrap: wrap; /* Allows blocks to wrap - ESSENTIAL for responsiveness */
+}
+
+/* Styles for each individual info block */
+.info-block {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px; 
+    transition: background-color 0.3s ease; 
+    flex: 1 1 18%; /* Base: 5 items per row on desktop */
+    max-width: 200px; /* Limits size on very large screens */
+    cursor: default;
+}
+
+/* Hover effect from the original HTML */
+.info-block:hover {
+    background-color: #f89a20 !important;
+}
+
+/* Icon and Text Styling */
+.info-box-icon img {
+    width: 80px; 
+    height: 80px;
+    display: block;
+}
+
+.info-box-title {
+    margin-bottom: 5px;
+    font-size: 1em; 
+    font-weight: bold;
+}
+
+.info-box-description {
+    font-size: 0.85em;
+    color: #666;
+}
+
+/*
+--- Media Queries for Responsiveness ---
+*/
+
+/* Tablet Layout (Screens between 601px and 1024px) */
+@media (max-width: 1024px) {
+    .info-block {
+        /* 3 items per row */
+        flex: 1 1 calc(33.33% - 20px); 
+        max-width: calc(33.33% - 20px);
+    }
+}
+
+/* Mobile Layout (Screens up to 600px) */
+@media (max-width: 600px) {
+    .info-block {
+        /* 2 items per row */
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+        padding: 10px;
+    }
+}
+
+/* Very Small Mobile Layout (Screens up to 400px) */
+@media (max-width: 400px) {
+    .info-block {
+        /* 1 item per row */
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* Category Section Styles */
+
+ /* Category Section Styling */
+.category-section {
+    max-width: 1200px; /* Max width of the entire section */
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* --- Heading Left Align --- */
+.section-heading { /* Changed from .category-section h2 to be more specific */
+    font-size: 28px; /* Slightly larger heading */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px; /* Increased space below heading */
+    text-align: left; /* Heading ko left align kiya */
+    padding-left: 10px; /* Thoda padding left side se */
+}
+
+/* Category Grid (Fully Responsive) */
+.category-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to the next line */
+    gap: 25px; /* Increased space between the cards (pehle 15px tha) */
+    justify-content: flex-start; /* Aligns items to the start */
+    padding: 0 10px; /* Grid ke edges se thoda padding */
+}
+
+/* Category Card Styling */
+.category-card {
+    /* To ensure cards are 'khula khula' and responsive,
+       we adjust flex-basis based on how many cards per row we want.
+       Let's aim for 6 cards on large screens to give more space.
+    */
+    flex-basis: calc(16.666% - 25px); /* 100%/6 = 16.666%, subtracting gap */
+    min-width: 130px; /* Minimum width to prevent cards from getting too small on mobile */
+    text-decoration: none; /* Removes underline from links */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent; /* Card ka background transparent rakha */
+    
+    /* Animation: Smooth transition for hover effects */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Image Container (Round Shape) */
+.category-image-container {
+    width: 150px; /* Fixed width for the circular container */
+    height: 150px; /* Fixed height for the circular container */
+    position: relative;
+    overflow: hidden; /* Hides the part of the image that zooms out */
+    border-radius: 50%; /* Makes the container perfectly ROUND */
+    margin-bottom: 12px; /* Increased space below image */
+    background-color: #fff; /* White background inside the circle */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for the circle */
+    display: flex; /* For centering the image if needed */
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #eee; /* Light border around the circle */
+}
+
+.category-image {
+    width: 100%; /* Image thodi choti taaki border dikhe */
+    height: 100%;
+    object-fit: contain; /* Ensures the whole image is visible within the circle */
+                               /* 'cover' ki jagah 'contain' use kiya hai */
+    
+    /* Animation: Smooth transition for the zooming effect */
+    transition: transform 0.5s ease-out;
+}
+
+.category-name {
+    font-size: 15px; /* Slightly larger text */
+    font-weight: 500;
+    line-height: 1.3;
+    padding: 0 8px;
+    color: #555; /* Thoda halka text color */
+}
+
+/* --- HOVER EFFECTS & ANIMATIONS --- */
+
+/* 1. Zooming Picture Animation */
+.category-card:hover .category-image {
+    /* Zoom in the image on hover */
+    transform: scale(1.1); 
+}
+
+/* 2. Card Lift/Scale Animation (Hover Effect) */
+.category-card:hover {
+    /* Lifts the card slightly */
+    transform: translateY(-8px); 
+}
+
+/* 3. Name Color Change (Hover Effect) */
+.category-card:hover .category-name {
+    color: #FFC300; /* Example: Blue highlight for the text */
+}
+
+/* --- RESPONSIVENESS (Media Queries) --- */
+
+/* Adjusting layout for Tablets (e.g., 600px and up) */
+@media (max-width: 1024px) {
+    .category-card {
+        /* Show 5 items per row (100% / 5 = 20%) */
+        flex-basis: calc(20% - 25px);
+    }
+    .category-image-container {
+        width: 130px;
+        height: 130px;
+    }
+    .category-name {
+        font-size: 14px;
+    }
+}
+
+/* Adjusting layout for Smaller Tablets/Large Mobiles (e.g., 480px and up) */
+@media (max-width: 768px) {
+    .section-heading {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    .category-card {
+        /* Show 4 items per row (100% / 4 = 25%) */
+        flex-basis: calc(25% - 25px);
+    }
+    .category-image-container {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+/* Adjusting layout for Mobile Phones (e.g., under 480px) */
+@media (max-width: 480px) {
+    .section-heading {
+        font-size: 22px;
+        margin-bottom: 20px;
+        padding-left: 0; /* Mobile par heading ko center bhi kar sakte hain agar chahe to */
+        text-align: center; 
+    }
+    .category-grid {
+        gap: 15px; /* Mobile par gap thoda kam kar diya */
+        justify-content: center; /* Mobile par cards ko center align kiya */
+        padding: 0;
+    }
+    .category-card {
+        /* Show 3 items per row (100% / 3 = 33.333%) */
+        flex-basis: calc(33.333% - 15px);
+        min-width: 90px;
+    }
+    .category-image-container {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+    .category-image {
+        width: 85%;
+        height: 85%;
+    }
+    .category-name {
+        font-size: 12px;
+        padding: 0 3px;
+    }
+}
+
+ /* Promotional Banner Section */
+
+ /* --- Three Card Promo Section Styling --- */
+
+.three-card-promo-section {
+    max-width: 1200px; /* Same max width as other sections */
+    margin: 40px auto; /* Margin above and below the section */
+    padding: 0 20px; /* Padding on sides for smaller screens */
+}
+
+.promo-grid {
+    display: flex;
+    gap: 30px; /* Space between the three cards */
+    justify-content: center; /* Centers cards if there's extra space */
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+}
+
+/* Link Wrapper for each Promo Card */
+.promo-card-link {
+    text-decoration: none;
+    color: #333; /* Default text color */
+    
+    /* Flex-basis for 3 cards per row */
+    flex-basis: calc(33.333% - 20px); /* 100% / 3 = 33.333%, minus gap */
+    min-width: 280px; /* Minimum width for cards to prevent them from becoming too small */
+
+    display: block; /* Ensures the whole link area is clickable */
+    border-radius: 12px; /* Rounded corners for the entire card link */
+    overflow: hidden; /* Crucial for image zoom effect */
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
+    
+    /* Animation: Smooth transition for hover effects */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Inner card item (if any specific styling is needed, though image fills it) */
+.promo-card-item {
+    width: 100%;
+    position: relative;
+    /* Optional: padding-top for aspect ratio if image size varies, 
+       but for banners, direct image size usually works fine. */
+}
+
+/* The Promo Image Itself */
+.promo-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below the image */
+    
+    /* Animation: Smooth transition for the zooming effect */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth ease-out curve */
+}
+
+/* --- HOVER EFFECTS & ANIMATIONS --- */
+
+/* 1. Zooming Picture Animation */
+.promo-card-link:hover .promo-image {
+    transform: scale(1.05); /* Zoom in the image slightly on hover */
+}
+
+/* 2. Card Lift/Scale Animation (Hover Effect) */
+.promo-card-link:hover {
+    transform: translateY(-8px); /* Lifts the card slightly */
+    box-shadow: 10px 30px 30px rgba(0, 0,0,0.2 ); /* Stronger shadow on hover */
+}
+
+/* --- RESPONSIVENESS (Media Queries) --- */
+
+/* Adjusting layout for Tablets (e.g., 768px and up) */
+@media (max-width: 992px) {
+    .promo-card-link {
+        /* Show 2 items per row */
+        flex-basis: calc(50% - 15px); /* 100% / 2 = 50%, adjusting for gap */
+    }
+}
+
+/* Adjusting layout for Mobile Phones (e.g., under 600px) */
+@media (max-width: 600px) {
+    .three-card-promo-section {
+        padding: 0 15px; /* Adjust section padding on small screens */
+    }
+    .promo-grid {
+        gap: 15px; /* Reduce gap on small screens */
+    }
+    .promo-card-link {
+        /* Show 1 item per row */
+        flex-basis: 100%; 
+        min-width: unset; /* Remove min-width when stacking */
+    }
+}
+
+/* Air Conditioners Cards */
+
+  /* Custom CSS Variables */
+:root {
+    --harvel-gold: #FFC300;
+    --harvel-black: #000000;
+    --harvel-dark-bg: #111111;
+    --card-bg: #ffffff; /* Use white/light background for card content as in the image */
+    --text-color: #333333;
+    --light-text: #666666;
+}
+
+ 
+
+.section-title {
+    color: black; /* Use white for the main heading */
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    margin-right: 10px;
+    margin-left: 15px;
+    
+}
+ 
+
+/* ---------------------------------- */
+/* Product Grid Layout         */
+/* ---------------------------------- */
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    gap: 20px;
+    justify-content: flex-start; /* Aligns items to the start */
+    padding: 0;
+}
+
+.product-card {
+    /* Base size for 5 cards in a row with gap */
+    flex: 0 0 calc((100% / 5) - 16px); 
+    max-width: calc((100% / 5) - 16px);
+    
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Animation & Hover Effects Base */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect: Lifts and darkens shadow */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------------- */
+/* Image and Discount          */
+/* ---------------------------------- */
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--harvel-gold);
+    color: var(--harvel-black);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8em;
+    z-index: 10;
+}
+
+.product-image-container {
+    height: 180px; /* Fixed height for image area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Important for zooming effect */
+}
+
+.product-image {
+    max-width: 90%; /* Ensures the image fits well */
+    height: auto;
+    display: block;
+    object-fit: contain;
+    
+    /* Image Zoom Animation */
+    transition: transform 0.5s ease;
+}
+
+/* Image Zoom on Card Hover */
+.product-card:hover .product-image {
+    transform: scale(1.1); /* Zooms the image */
+}
+
+/* ---------------------------------- */
+/* Product Info Styling        */
+/* ---------------------------------- */
+
+.product-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-name {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0;
+    color: var(--harvel-black);
+    min-height: 2em; /* Ensure consistent card height */
+}
+
+.brand {
+    font-size: 0.9em;
+    color: var(--light-text);
+    margin: 0;
+}
+
+.stock-info {
+    font-size: 0.9em;
+    color: green;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.stock-info i {
+    margin-right: 5px;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--harvel-black);
+    margin: 10px 0 15px 0;
+}
+
+/* ---------------------------------- */
+/* Add to Cart Button         */
+/* ---------------------------------- */
+
+.add-to-cart-btn {
+    background-color: var(--harvel-gold);
+    color: var(--harvel-black);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    
+    /* Setup for Cart Icon transition */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cart-icon {
+    position: absolute;
+    right: -30px; /* Start off-screen to the right */
+    opacity: 0;
+    font-size: 1.1em;
+    transition: right 0.3s ease, opacity 0.3s ease;
+}
+
+/* Button Hover Effect: Shows Cart Icon */
+.add-to-cart-btn:hover {
+    background-color: var(--harvel-black);
+    color: var(--harvel-gold);
+    padding-right: 40px; /* Make space for the icon */
+}
+
+.add-to-cart-btn:hover .cart-icon {
+    right: 15px; /* Moves the icon into view */
+    opacity: 1;
+}
+
+/* ---------------------------------- */
+/* Pagination Link          */
+/* ---------------------------------- */
+
+.pagination-link {
+    text-align: right;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+
+.pagination-link a {
+    color: var(--harvel-gold);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--harvel-gold);
+    border-radius: 25px;
+
+}
+
+.pagination-link a:hover {
+    background-color: var(--harvel-gold);
+    color: var(--harvel-black);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 15px rgba(0, 0, 0,0.3);
+     
+}
+
+/* ---------------------------------- */
+/* Responsiveness           */
+/* ---------------------------------- */
+
+/* Tablet view: 3 cards per row */
+@media (max-width: 1200px) {
+    .product-card {
+        flex: 0 0 calc((100% / 3) - 14px);
+        max-width: calc((100% / 3) - 14px);
+    }
+}
+
+/* Large Phone view: 2 cards per row */
+@media (max-width: 768px) {
+    .product-card {
+        flex: 0 0 calc((100% / 2) - 10px);
+        max-width: calc((100% / 2) - 10px);
+    }
+}
+
+/* Small Phone view: 1 card per row */
+@media (max-width: 500px) {
+    .product-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .product-grid {
+        gap: 15px;
+    }
+}
+
+/* Promotional Banner */
+
+ /* --- THEME COLORS --- */
+:root {
+    --promo-primary-color: #FFD700; /* Bright Yellow/Gold */
+    --promo-secondary-color: #1a1a1a; /* Dark Black/Grey */
+    --promo-text-light: #ffffff;
+}
+
+/* --- GENERAL STYLING --- */
+ 
+
+.promo-section-title { /* Class changed */
+    text-align: center;
+    color: black;
+    margin: 40px 0 30px;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    animation: promoFadeInDown 1s ease-out; /* Keyframe name changed */
+}
+
+@keyframes promoFadeInDown { /* Keyframe name changed */
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --- PROMOTIONAL BANNERS --- */
+.promo-banner-wrapper { /* Class changed */
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    justify-content: center;
+    padding: 0 20px 40px; 
+}
+
+.promo-card { /* Class changed */
+    flex: 1 1 45%;
+    max-width: 550px;
+    min-width: 300px; 
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative; 
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2); 
+    transition: transform 0.5s ease-out;
+    border: 3px solid transparent; 
+}
+
+/* Hover Effect 1: Lift and Yellow Border Glow */
+.promo-card:hover { /* Class changed */
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.8);
+    animation: promoFlashBorder 1s infinite alternate; /* Keyframe name changed */
+}
+
+/* Border Animation Keyframes */
+@keyframes promoFlashBorder { /* Keyframe name changed */
+    0% { border-color: transparent; }
+    100% { border-color: var(--promo-primary-color); }
+}
+
+.promo-card a { /* Class changed */
+    text-decoration: none;
+    display: block;
+    position: relative;
+    color: var(--promo-text-light);
+}
+
+.promo-image-overlay { /* Class changed */
+    overflow: hidden;
+}
+
+/* Hover Effect 2: Pic Zooming */
+.promo-visual-img { /* Class changed */
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.promo-card:hover .promo-visual-img { /* Class changed */
+    transform: scale(1.15);
+}
+
+.promo-text-content { /* Class changed */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Stylish Blur Effect */
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    padding: 20px;
+    /* Content Fade Transition */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Hover Effect 3: Content Fade In */
+.promo-card:hover .promo-text-content { /* Class changed */
+    opacity: 1;
+}
+
+.promo-text-content h4 { /* Class changed */
+    margin: 0 0 10px 0;
+    font-size: 1.8em;
+    color: var(--promo-primary-color);
+    text-transform: uppercase;
+}
+
+.promo-text-content p { /* Class changed */
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+/* --- MEDIA QUERIES (RESPONSIVENESS) --- */
+@media (max-width: 768px) {
+    .promo-banner-wrapper {
+        gap: 20px;
+    }
+    
+    .promo-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: unset;
+    }
+
+    .promo-text-content h4 {
+        font-size: 1.5em;
+    }
+    .promo-card:hover {
+        animation: none;
+    }
+}
+
+/* Custom Styles */
+
+  .reviews-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+.reviews-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.review-slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease-in-out;
+}
+
+.review-card {
+  min-width: 300px;
+  max-width: 350px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: grab;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.15);
+}
+
+.review-header h3 {
+  color: #222;
+  font-weight: bold;
+}
+
+.review-header p {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.stars {
+  color: #ffb400;
+  font-size: 1.2rem;
+}
+
+.review-text {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.slider-buttons {
+  margin-top: 25px;
+}
+
+.slider-buttons button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 0 5px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.slider-buttons button:hover {
+  background-color: gold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .review-slider {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review-card {
+    max-width: 90%;
+  }
+
+  .slider-buttons {
+    display: none; /* optional for mobile */
+  }
+}
+
+/* Map Section */
+
+.map-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+}
+
+.map-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  max-width: 1000px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .map-section {
+    padding: 40px 10px;
+  }
+
+  .map-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+}
+
+/* Shop By Brands */
+
+.brands-section {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #ffffff, #f4f6f8);
+  text-align: center;
+}
+
+.brands-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.brands-slider {
+  display: flex;
+  gap: 25px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.brand-card {
+  flex: 0 0 auto;
+  width: 140px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.brand-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.brand-card img {
+  max-width: 100%;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.brand-card span {
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 600;
+  display: block;
+}
+
+.brands-nav {
+  margin-top: 25px;
+}
+
+.brands-nav button {
+  background:black;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1.3rem;
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.brands-nav button:hover {
+  background: gold;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brands-slider {
+    gap: 15px;
+  }
+  .brand-card {
+    width: 100px;
+  }
+  .brand-card img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brands-slider {
+    gap: 10px;
+  }
+  .brand-card {
+    width: 80px;
+  }
+  .brand-card img {
+    height: 35px;
+  }
+}
+
+
+ /* Footer Section */
+
+ .footer {
+  background-color: #000;
+  color: #f5f5f5;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Title */
+.footer-title {
+  color: #FFD700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Footer Items */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-item:hover {
+  color: #FFD700;
+}
+
+.footer-item i {
+  color: #FFD700;
+}
+
+/* Social Icons */
+.footer-social p {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  background: #111;
+  border: 1px solid #FFD700;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background: #FFD700;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Center Links */
+.footer-center h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li {
+  margin: 10px 0;
+}
+
+.footer-center ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-center ul li a:hover {
+  color: #FFD700;
+  padding-left: 5px;
+}
+
+/* Subscribe */
+.footer-right h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-right p {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.subscribe-form button {
+  background: #FFD700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+ /*  */
+ /* make footer a positioned container */
+.footer {
+  position: relative; /* already present? ensure this */
+  padding-bottom: 50px; /* give space so credit doesn't overlap content */
+}
+
+/* place credit exactly at bottom center of the footer */
+.footer-credit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;          /* distance from footer bottom; adjust to taste */
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #777;           /* keeps existing style */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    min-width: 100%;
+  }
+
+  .footer-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input, .subscribe-form button {
+    width: 100%;
+  }
+}
+
+
+/* SHOP HTML */
+
+ /* ======= Modern Sidebar (Desktop + Tablet) ======= */
+.brand-sidebar {
+  position: fixed;
+  top: 150px; /* adjust if navbar is taller */
+  left: 20px;
+  width: 220px;
+  height: 75vh;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px 15px;
+  overflow-y: auto;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.brand-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.brand-sidebar::-webkit-scrollbar-thumb {
+  background-color: gold;
+  border-radius: 10px;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  margin-bottom: 15px;
+  border-bottom: 2px solid gold;
+  padding-bottom: 8px;
+}
+
+.brand-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #fff;
+  border: 2px solid #eee;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.brand-item span {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.brand-item:hover img {
+  transform: scale(1.15);
+  border-color: #0d6efd;
+  box-shadow: 0 6px 14px rgba(13,110,253,0.3);
+}
+
+.brand-item:hover span {
+  color: #0d6efd;
+}
+
+/* Adjust page content so it doesn't overlap */
+.main-content {
+  margin-left: 260px;
+  padding: 20px;
+}
+
+/* ======= Hide Sidebar on Mobile ======= */
+@media (max-width: 768px) {
+  .brand-sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+
+/* Shop By Brands */
+
+ /* ======= Product Card Grid ======= */
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #f6f6f6;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Product Info */
+.product-info {
+  text-align: center;
+  padding: 15px;
+}
+
+.product-info h6 {
+  color: #111;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: #b8860b;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+  margin-top: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-to-cart i {
+  margin-left: 8px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background: #b8860b;
+  color: #000;
+}
+
+.add-to-cart:hover i {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ======= Popup ======= */
+.cart-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: #fff;
+  padding: 25px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.cart-popup.active {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cart-popup i {
+  font-size: 40px;
+  color: #b8860b;
+  margin-bottom: 10px;
+}
+
+.cart-popup p {
+  font-weight: 600;
+  color: #000;
+}
+
+/* ======= Responsive ======= */
+@media (max-width: 768px) {
+  .product-card img {
+    height: 180px;
+  }
+}
+
+/* WHATSAPP ICON BTN */
+
+ .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 2px 2px 14px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    z-index: 1000;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover Effect */
+.whatsapp-button:hover {
+    transform: translateY(-6px);
+    box-shadow: 2px 8px 20px rgba(0,0,0,0.4);
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+/* Text */
+.whatsapp-text {
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Responsive for small screens (mobile) */
+@media (max-width: 480px) {
+    .whatsapp-button {
+        padding: 10px 14px;
+    }
+    .whatsapp-text {
+        font-size: 14px;
+    }
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 6px;
+    }
+}
+ 
+
+
+/* Adil Chat Bot */
+
+ .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+    }
+    /* WhatsApp button */
+    .whatsapp-btn img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+    /* Chatbot button */
+    .chatbot-btn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    .chatbot-btn:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+
+    /* Chatbox */
+    #chatbox {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .chatbox-header {
+      background: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chatbox-body {
+      padding: 10px;
+      height: 250px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .msg {
+      padding: 8px 12px;
+      border-radius: 12px;
+      max-width: 80%;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: #dcf8c6;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #f1f1f1;
+    }
+
+    .chatbox-footer {
+      border-top: 1px solid #ddd;
+      display: flex;
+      padding: 8px;
+    }
+
+    .chatbox-footer input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .chatbox-footer button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+  
+
+/* CART ITEM POPUP */
+
+ 

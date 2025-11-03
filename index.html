@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvel Electronic</title>
+    <style>
+        .popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 8px;
+  display: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 14px;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -3px 0 6px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.cart-sidebar.active {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: black;
+}
+
+.cart-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-sidebar li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart-total {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  font-size: 16px;
+  text-align: right;
+  font-weight: bold;
+}
+
+
+.chatbox-header {
+  background: #0078ff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg harvel-navbar">
+    <div class="container-fluid">
+        
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand mx-auto" href="#">
+            <img src="./pics folder/logo ad1.jpg" alt="Harvel Electronic Logo" class="harvel-logo">
+            <span class="d-none d-md-inline">Harvel <span>Electronic</span></span> 
+        </a>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item harvel-cart-link">
+                    <a class="nav-link" href="#" id="cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        Cart (<span id="cart-item-count">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <a class="nav-link harvel-cart-mobile d-lg-none" href="#" id="cart-link-mobile">
+            <i class="fas fa-shopping-cart"></i> 
+            <span id="cart-item-count-mobile">0</span>
+        </a>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-start harvel-offcanvas" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Categories</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item d-lg-none">
+                <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item d-lg-none">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-header" href="">All Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="productcard1.html">Air Conditioners</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="geysers.html">Geysers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="refrigerator.html">Refrigerators</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="moreproduct.html">LEDs & Audio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="deepfrezer.html">Deep Freezer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="machine.html">Washing Machines & Dryer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="kitchen.html">Kitchen Appliances</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="water.html">Water Dispensers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="small.html">Small Appliances</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="mobile.html">Mobile Accessories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link harvel-category-item" href="aricoloerwatercloer.html">Air Cooler & Water Cooler</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Secondary Navbar -->
+
+<nav class="navbar navbar-expand harvel-secondary-navbar d-none d-lg-flex">
+    <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="airconditioner.html" id="acDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Air Conditioners
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="acDropdown">
+                    <li><a class="dropdown-item" href="productcard1.html">Inverter AC</a></li>
+                    <li><a class="dropdown-item" href="productcard1.html">Non-Inverter AC</a></li>
+                    <li><a class="dropdown-item" href="productcard1.html">Portable AC</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="geysers.html" id="geyserDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Geysers
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="geyserDropdown">
+                    <li><a class="dropdown-item" href="geysers.html">Electric Geysers</a></li>
+                    <li><a class="dropdown-item" href="geysers.html">Gas Geysers</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="refrigerator.html" id="refrigDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Refrigerators
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="refrigDropdown">
+                    <li><a class="dropdown-item" href="refrigerator.html">Double Door</a></li>
+                    <li><a class="dropdown-item" href="refrigerator.html">Side-by-Side</a></li>
+                    <li><a class="dropdown-item" href="refrigerator.html">Single Door</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="moreproduct.html" id="ledDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    LEDs & Audio
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="ledDropdown">
+                    <li><a class="dropdown-item" href="./moreproduct.html">Smart LEDs</a></li>
+                    <li><a class="dropdown-item" href="moreproduct.html">Sound Bars</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="deepfrezer.html" id="freezerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Deep Freezer
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="freezerDropdown">
+                    <li><a class="dropdown-item" href="deepfrezer.html">Chest Freezers</a></li>
+                    <li><a class="dropdown-item" href="deepfrezer.html">Upright Freezers</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="machine.html" id="washDryerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Washing Machines & Dryer
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="washDryerDropdown">
+                    <li><a class="dropdown-item" href="moreproduct1.html">Automatic</a></li>
+                    <li><a class="dropdown-item" href="moreproduct1.html">Semi-Automatic</a></li>
+                    <li><a class="dropdown-item" href="moreproduct1.html">Dryers</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="kitchen.html" id="kitchenDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Kitchen Appliances
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="kitchenDropdown">
+                    <li><a class="dropdown-item" href="kitchen.html">Microwaves</a></li>
+                    <li><a class="dropdown-item" href="kitchen.html">Blenders</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    More Categories
+                </a>
+                <ul class="dropdown-menu harvel-dropdown-menu" aria-labelledby="moreDropdown">
+                    <li><a class="dropdown-item" href="water.html">Water Dispensers</a></li>
+                    <li><a class="dropdown-item" href="small.html">Small Appliances</a></li>
+                    <li><a class="dropdown-item" href="moreproduct3.html">Mobile Accessories</a></li>
+                    <li><a class="dropdown-item" href="aricoloerwatercloer.html">Air Cooler & Water Cooler</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<!-- Slider Images -->
+
+<div id="harvelCarousel" class="carousel slide harvel-carousel" data-bs-ride="carousel">
+    
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#harvelCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#harvelCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#harvelCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#harvelCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#harvelCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#harvelCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+            <a href="slider1.html" class="harvel-slide-link">
+                <img src="./pics folder/pic 1.png" class="d-block w-100 harvel-carousel-img" alt="Air Conditioners Sale" height="40px" width="100px"> 
+            </a>
+        </div>
+        
+        <div class="carousel-item" data-bs-interval="5000">
+            <a href="slider2.html" class="harvel-slide-link">
+                <img src="./pics folder/pic 2.png" class="d-block w-100 harvel-carousel-img" alt="New Refrigerators">
+            </a>
+        </div>
+        
+        <div class="carousel-item" data-bs-interval="5000">
+            <a href="slider3.html" class="harvel-slide-link">
+                <img src="./pics folder/pic 3.png" class="d-block w-100 harvel-carousel-img" alt="LED TVs">
+            </a>
+        </div>
+
+       
+
+        <div class="carousel-item" data-bs-interval="5000">
+            <a href="slider4.html" class="harvel-slide-link">
+                <img src="./pics folder/pic 6.png" class="d-block w-100 harvel-carousel-img" alt="Small Appliances">
+            </a>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#harvelCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#harvelCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+   </div>
+
+   <!-- Marquee Section -->
+
+   <div class="marquee-container">
+  <p class="marquee-text">
+    ⚡ SUPER SEPTEMBER SALE IS NOW LIVE ⚡  SUPER SEPTEMBER SALE UP TO 70% OFF ON EVERYTHING⚡ Mobile Accessories par behtareen offers! ⚡ Jaldi karein, stock mehdood hai! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    ⚡  SUPER SEPTEMBER SALE IS NOW LIVE ⚡ Naye fridge models par 50% deals! ⚡ Mobile Accessories par behtareen offers! ⚡  SUPER SEPTEMBER SALE IS NOW LIVE
+  </p>
+  </div>
+
+  <!-- ANIMATION GIF'S -->
+
+
+
+
+   <div class="info-blocks-container">
+    
+    <div class="info-block">
+        <div class="box-icon-wrap">
+            <div class="info-box-icon">
+                <img src="https://www.alfatah.com.pk/wp-content/uploads/2023/12/Fast-Shipping.gif" alt="FAST SHIPPING">
+            </div>
+        </div>
+        <div class="info-box-content">
+            <h5 class="info-box-title">FAST SHIPPING</h5>
+            <p class="info-box-description">Same day Delivery in Pakistan.</p>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="box-icon-wrap">
+            <div class="info-box-icon">
+                <img src="https://www.alfatah.com.pk/wp-content/uploads/2023/12/7-day.gif" alt="7 DAYS RETURN POLICY">
+            </div>
+        </div>
+        <div class="info-box-content">
+            <h5 class="info-box-title">7 DAYS RETURN POLICY</h5>
+            <p class="info-box-description">Terms And Conditions Apply.</p>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="box-icon-wrap">
+            <div class="info-box-icon">
+                <img src="https://www.alfatah.com.pk/wp-content/uploads/2023/12/Packaging-Video.gif" alt="PACKAGING VIDEO">
+            </div>
+        </div>
+        <div class="info-box-content">
+            <h5 class="info-box-title">PACKAGING VIDEO</h5>
+            <p class="info-box-description">Terms And Conditions Apply.</p>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="box-icon-wrap">
+            <div class="info-box-icon">
+                <img src="https://www.alfatah.com.pk/wp-content/uploads/2023/12/247-Customer-Support.gif" alt="CUSTOMER SUPPORT">
+            </div>
+        </div>
+        <div class="info-box-content">
+            <h5 class="info-box-title">CUSTOMER SUPPORT</h5>
+            <p class="info-box-description">With Quick Response</p>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="box-icon-wrap">
+            <div class="info-box-icon">
+                <img src="https://www.alfatah.com.pk/wp-content/uploads/2023/12/Lowest-Price.gif" alt="LOWEST PRICE">
+            </div>
+        </div>
+        <div class="info-box-content">
+            <h5 class="info-box-title">LOWEST PRICE</h5>
+            <p class="info-box-description">With Quick Response</p>
+        </div>
+    </div>
+
+    <!-- TOP categories -->
+
+     <div class="category-section">
+        <h2 class="section-heading">Popular Categories</h2> <div class="category-grid">
+            <a href="productcard1.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 9.jpg" alt="Air Conditioners" class="category-image">
+                </div>
+                <span class="category-name">Air Conditioners</span>
+            </a>
+
+            <a href="aricoloerwatercloer.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 10.jpg" alt="Air Cooler & Water Cooler" class="category-image">
+                </div>
+                <span class="category-name">Air Cooler & Water Cooler</span>
+            </a>
+
+            <a href="refrigerator.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 11.jpg" alt="Refrigerators" class="category-image">
+                </div>
+                <span class="category-name">Refrigerators</span>
+            </a>
+
+            <a href="moreproduct1.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 12.jpg" alt="Washing Machines" class="category-image">
+                </div>
+                <span class="category-name">Washing Machines</span>
+            </a>
+
+            <a href="moreproduct.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 13.jpg" alt="LEDs & Audio" class="category-image">
+                </div>
+                <span class="category-name">LEDs & Audio</span>
+            </a>
+
+            <a href="kitchen.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 14.jpg" alt="Kitchen Appliances" class="category-image">
+                </div>
+                <span class="category-name">Kitchen Appliances</span>
+            </a>
+
+            <a href="small.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 15.jpg" alt="Small Appliances" class="category-image">
+                </div>
+                <span class="category-name">Small Appliances</span>
+            </a>
+
+            <a href="water.html" class="category-card">
+                <div class="category-image-container">
+                    <img src="./pics folder/pic 16.jpg" alt="Water Dispensers" class="category-image">
+                </div>
+                <span class="category-name">Water Dispensers</span>
+            </a>
+        </div>
+    </div>
+    <!-- Promotional Banner Section -->
+
+    <div class="three-card-promo-section">
+        <div class="promo-grid">
+            
+            <a href="des1.html" class="promo-card-link">
+                <div class="promo-card-item">
+                    <img src="./pics folder/pic 17.png" alt="Taste The Healthy Way" class="promo-image">
+                </div>
+            </a>
+            
+            <a href="des2.html" class="promo-card-link">
+                <div class="promo-card-item">
+                    <img src="./pics folder/pic18.png" alt="Drive Smart Live Connected" class="promo-image">
+                </div>
+            </a>
+            
+            <a href="des3.html" class="promo-card-link">
+                <div class="promo-card-item">
+                    <img src="./pics folder/pic 19.png" alt="Wash Smarter Live Better" class="promo-image">
+                </div>
+            </a>
+            
+        </div>
+    </div>
+ </div>
+
+ <!-- Air Conditioners Cards 1 -->
+    <h1 class="section-title">Air Conditioner (AC) at Lowest Price In Pakistan</h1>
+    
+    <div class="product-grid">
+
+    
+        <div class="product-card">
+            <span class="discount-badge">-23%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/ac1.jpg" alt="Haier 1.0 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 1.0 Ton Inverter Air</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 107,500</p>
+                 
+                <button class="add-to-cart-btn"  >
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <span class="discount-badge">-12%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/ac2.jpg" alt="Haier 2 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 2 Ton Inverter Air</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 206,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <span class="discount-badge">-13%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/ac3.jpg" alt="Haier 24HDZ 2.0 Ton" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 24HDZ 2.0 Ton</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 305,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-15%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/ac4.jpg" alt="Haier 4.0 Ton Non-Inverter" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 4.0 Ton Non-</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 410,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-18%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/ac5.jpg" alt="Haier Inverter Cabinet" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier Inverter Cabinet</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 287,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pagination-link">
+        <a href="productcard1.html">More Products &gt;</a>
+    </div>
+
+    <!-- Promotional Banner -->
+
+    <h2 class="promo-section-title"> Special Offers ⚡</h2>
+<div class="promo-banner-wrapper"> <div class="promo-card promo-card-left"> <a href="promo1.html" id="promo-link-1"> <div class="promo-image-overlay"> <img src="./pics folder/21.png" alt="Special Offer Banner" class="promo-visual-img"> </div>
+            <div class="promo-text-content"> <h4>Flat 50% Off!</h4>
+                <p>Limited Time Sale on Select Items.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="promo-card promo-card-right"> <a href="promo2.html" id="promo-link-2"> <div class="promo-image-overlay"> <img src="./pics folder/22.png" alt="New Arrivals Banner" class="promo-visual-img"> </div>
+            <div class="promo-text-content"> <h4>New Arrivals 🔥</h4>
+                <p>Shop the 2024 Collection Now!</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- LED TV'S PAKISTAN -->
+
+<h1 class="section-title">LED TV's  at Best Price In Pakistan</h1>
+    
+    <div class="product-grid">
+    
+        
+        <div class="product-card">
+            <span class="discount-badge">-23%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/led1.jpg" alt="Haier 1.0 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 1.0 Ton Inverter Air</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 107,500</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-12%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/led2.jpg" alt="Haier 2 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 2 Ton Inverter Air</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 206,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <span class="discount-badge">-13%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/led3.jpg" alt="Haier 24HDZ 2.0 Ton" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 24HDZ 2.0 Ton</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 305,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-15%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/led4.jpg" alt="Haier 4.0 Ton Non-Inverter" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier 4.0 Ton Non-</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 410,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-18%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/led5.jpg" alt="Haier Inverter Cabinet" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier Inverter Cabinet</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 287,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pagination-link">
+        <a href="moreproduct.html">More Products &gt;</a>
+    </div>
+
+    <!-- WASHING MACHINE PAKISTAN -->
+
+    <h1 class="section-title">Washing Machine Price In Pakistan</h1>
+    
+    <div class="product-grid">
+    
+        
+        <div class="product-card">
+            <span class="discount-badge">-23%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/Machine1.jpg" alt="Haier 1.0 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier HD100-AR376PGUI Washing Machine 10 KG</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs. 234,999</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-12%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/machine2.jpg" alt="Haier 2 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Anti slip Washing Machine Pack of 4</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs. 230,999</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <span class="discount-badge">-13%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/machine3.jpg" alt="Haier 24HDZ 2.0 Ton" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier Washing Machine</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 305,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-15%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/machine4.jpg" alt="Haier 4.0 Ton Non-Inverter" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Washing Machine Pack of 4</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 410,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-18%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/machine5.jpg" alt="Haier Inverter Cabinet" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Haier Washing Cabinet</h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 287,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pagination-link">
+        <a href="moreproduct1.html">More Products &gt;</a>
+    </div>
+
+    <!-- Mobile Accessories Section -->
+
+     <h1 class="section-title">Mobile Accessories Price In Pakistan</h1>
+    
+    <div class="product-grid">
+    
+        
+        <div class="product-card">
+            <span class="discount-badge">-23%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/mobile.1.gif" alt="Haier 1.0 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Porodo TPU Fashion Case For iPhone 11 Pro Max</h3>
+                <p class="brand">Ecostar</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs.999</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-12%</span>
+            <div class="product-image-container">
+                <a href="">
+                <img src="pics folder/mobile1.jpg" alt="Haier 2 Ton Inverter Air" class="product-image">
+                </a>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Porodo TPU Fashion Case </h3>
+                <p class="brand">Ecostar</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">RS.700</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <span class="discount-badge">-13%</span>
+            <div class="product-image-container">
+                <img src="pics folder/mobile2.gif" alt="Haier 24HDZ 2.0 Ton" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Pro Max 6.7 Inch – Black – X003AZY8CT</h3>
+                <p class="brand">TCL</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs. 999
+</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-15%</span>
+            <div class="product-image-container">
+                <img src="pics folder/mobile3.jpg" alt="Haier 4.0 Ton Non-Inverter" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Pro Max 6.7 Inch – Black – X003AZY8CT</h3>
+                <p class="brand">TCL</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">99,709</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-18%</span>
+            <div class="product-image-container">
+                <img src="pics folder/mobil4.jpg" alt="Haier Inverter Cabinet" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Samsung 55Q70B Air BUDS</h3>
+                <p class="brand">Samsung</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs. 219,999</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pagination-link">
+        <a href="moreproduct2.html">More Products &gt;</a>
+    </div>
+
+    <!-- Best Watches For Men & Women -->
+
+     <h1 class="section-title">Best Watches For Men & Women</h1>
+    
+    <div class="product-grid">
+    
+        
+        <div class="product-card">
+            <span class="discount-badge">-23%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/watch1.jpg" alt="Haier 1.0 Ton Ipicnverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Smart Watch Health Fitness Tracker with 24/7</h3>
+                <p class="brand">Sleep Moniter</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 107,50</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-12%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/watch2.jpg" alt="Haier 2 Ton Inverter Air" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Smart Watch Health Fitness Tracker with 24/7 Heart Rate,</h3>
+                <p class="brand">Sleep Tracker</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 20,600</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <span class="discount-badge">-13%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/watch3.jpg" alt="Haier 24HDZ 2.0 Ton" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">OLEVS Couple Watches</h3>
+                <p class="brand">buy Brand</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 30,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-15%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/watch4.jfif" alt="Haier 4.0 Ton Non-Inverter" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Wrist Watch Men </h3>
+                <p class="brand">Haier</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 4,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="discount-badge">-18%</span>
+            <div class="product-image-container">
+                <img src="./pics folder/watch5.jpg" alt="Haier Inverter Cabinet" class="product-image">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Fitbit Versa 4 </h3>
+                <p class="brand">Fitbit</p>
+                <div class="stock-info">
+                    <i class="fas fa-check"></i>
+                    <span>In stock</span>
+                </div>
+                <p class="price">Rs 28,000</p>
+                <button class="add-to-cart-btn">
+                    Add To Cart
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pagination-link">
+        <a href="moreproduct3.html">More Products &gt;</a>
+    </div>
+
+    <!-- Customer Reviews Section -->
+
+    <section class="reviews-section">
+  <h2>Satisfied Customer's</h2>
+  <div class="review-slider">
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Ali Khan</h3>
+        <p>alikhan@gmail.com</p>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="review-text">
+        I absolutely love the quality! The material is soft and premium, and the delivery was super fast. Definitely buying again!
+      </p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Sara Ahmed</h3>
+        <p>sara.ahmed@gmail.com</p>
+        <div class="stars">★★★★☆</div>
+      </div>
+      <p class="review-text">
+        The packaging was really beautiful, and the support team helped me choose the perfect size. Loved the experience overall!
+      </p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Hamza Malik</h3>
+        <p>hamza.malik@gmail.com</p>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="review-text">
+        Excellent quality and very stylish. It feels like a luxury brand at an affordable price. Highly recommended!
+      </p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Fatima Noor</h3>
+        <p>fatima.noor@gmail.com</p>
+        <div class="stars">★★★★☆</div>
+      </div>
+      <p class="review-text">
+        Loved the colors and comfort. It fits perfectly and the design looks modern. Worth every penny!
+      </p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Usman Raza</h3>
+        <p>usman.raza@gmail.com</p>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="review-text">
+        I’m impressed with the customer service and attention to detail. The product exceeded my expectations!
+      </p>
+    </div>
+  </div>
+
+  <!-- Navigation buttons -->
+  <div class="slider-buttons">
+    <button id="prevBtn">❮</button>
+    <button id="nextBtn">❯</button>
+  </div>
+</section>
+
+<!-- Map Section -->
+
+ <section class="map-section">
+  <h2>Find Us Here 📍</h2>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.0485963526617!2d67.06929667433954!3d24.862189777928112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33ea2204eef55%3A0xd30b472ad63172d8!2sBusiness%20Avenue%2C%20Shahrah-e-Faisal%20Block%206%20PECHS%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1760926930866!5m2!1sen!2s"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- Shop By Brands -->
+
+<section class="brands-section">
+  <h2>Shop By Brands</h2>
+  <div class="brands-slider">
+    <div class="brand-card"><img src="./pics folder/pic 23.jfif" alt="Samsung"><span>Samsung</span></div>
+
+    <div class="brand-card"><img src="./pics folder/24.jfif" alt="LG"><span>LG</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 25.jfif" alt="Haier"><span>Haier</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 26.jfif" alt="Dawlance"><span>Dawlance</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 27.jfif" alt="TCL"><span>TCL</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 28.jfif" alt="PEL"><span>PEL</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 29.jfif" alt="Orient"><span>Orient</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 30.jfif" alt="Sony"><span>Sony</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 31.jfif" alt="Apple"><span>Apple</span></div>
+
+    <div class="brand-card"><img src="./pics folder/32.jfif" alt="HP"><span>HP</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 33.jfif" alt="Dell"><span>Dell</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 34.jfif" alt="Lenovo"><span>Lenovo</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 35.jfif" alt="Canon"><span>Canon</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 36.jfif" alt="Toshiba"><span>Toshiba</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 37.jfif" alt="Xiaomi"><span>Xiaomi</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 38.jfif" alt="Oppo"><span>Oppo</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 39.jfif" alt="Vivo"><span>Vivo</span></div>
+
+    <div class="brand-card"><img src="./pics folder/pic 40.jfif" alt="Realme"><span>Realme</span></div>
+    
+    <div class="brand-card"><img src="./pics folder/pic 41.jfif" alt="Infinix"><span>Infinix</span></div>
+  </div>
+
+  <div class="brands-nav">
+    <button id="brandPrev">❮</button>
+    <button id="brandNext">❯</button>
+  </div>
+</section>
+
+
+<!-- ====== FOOTER SECTION ====== -->
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2 class="footer-title">Harvel Electronics</h2>
+
+      <div class="footer-item">
+        <i class="fas fa-home"></i>
+        <span class="footer-text">Main Shara-e-Faisal Business Aveneu 75760 Karachi Pakistan</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-clock"></i>
+        <span class="footer-text">Mon – Sat: 9:00 AM – 10:00 PM</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-phone-alt"></i>
+        <span class="footer-text">+92 3480360061</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-envelope"></i>
+        <span class="footer-text">jbadil007@gmail.com</span>
+      </div>
+
+      <div class="footer-social">
+        <p>Follow Us:</p>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/jbadil007/" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.pinterest.com/jbadil007/_created/" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="https://www.linkedin.com/in/muhammad-adil-b02223386/?skipRedirect=true&restoreScroll=true&miniProfileUrn=null&enhance=null" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="shopbybrans.html">Shop by Brands</a></li>
+        <li><a href="customer.html">Customer Reviews</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE (SUBSCRIBE) -->
+    <div class="footer-right">
+      <h3>Subscribe Now</h3>
+      <p>Get updates on latest offers & new arrivals.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="footer-credit">© 2025 Harvel Electronics | Designed by Adil</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<!-- Adil Chat Bot -->
+
+<!-- Floating Buttons -->
+
+<!-- <div class="floating-buttons">
+  <button class="chatbot-btn" onclick="toggleChatbox()">🤖</button>
+  <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
+</div> -->
+
+<!-- Chatbox -->
+
+<!-- <div id="chatbox">
+  <div class="chatbox-header">Adil's AI Chatbot</div>
+   <button class="close-btn" onclick="toggleChatbox()">✖</button>
+  <div class="chatbox-body" id="chat-body">
+    <div class="msg bot">👋 Hi! Main Adil ka AI chatbot hoon. Kuch puchhna hai?</div>
+  </div>
+  <div class="chatbox-footer">
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div> -->
+
+
+
+
+<!-- WHATSAPP ICON BTN -->
+
+    <!-- Professional Responsive WhatsApp Floating Button Start -->
+<a href="https://api.whatsapp.com/send?phone=92+3480360061&text=Hello%20there!" 
+   target="_blank"
+   class="whatsapp-button">
+   
+   <!-- WhatsApp Icon -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="whatsapp-icon">
+     <path d="M13.601 2.326a7.564 7.564 0 0 0-5.356-2.09c-4.194 0-7.592 3.398-7.592 7.592 0 1.34.35 2.643 1.016 3.795L.007 16l4.445-1.15a7.548 7.548 0 0 0 3.693.984c4.194 0 7.592-3.398 7.592-7.592 0-2.03-.79-3.937-2.136-5.411Zm-5.356 12.174a6.448 6.448 0 0 1-3.317-.915l-.237-.14-2.634.68.703-2.566-.155-.266a6.443 6.443 0 0 1-1.014-3.227c0-3.57 2.9-6.47 6.47-6.47 1.727 0 3.354.67 4.575 1.886a6.44 6.44 0 0 1 1.89 4.58c0 3.57-2.9 6.47-6.47 6.47Zm3.545-4.798c-.195-.097-1.154-.57-1.334-.635-.18-.066-.312-.097-.443.097-.13.195-.505.635-.62.766-.114.13-.23.146-.426.05-.195-.097-.823-.303-1.565-.963-.578-.515-.97-1.15-1.084-1.345-.114-.195-.012-.3.086-.397.088-.087.195-.23.292-.345.097-.114.13-.195.195-.325.065-.13.033-.244-.016-.342-.05-.097-.443-1.067-.607-1.462-.16-.385-.322-.33-.443-.336l-.38-.007c-.13 0-.342.05-.522.244-.18.195-.69.675-.69 1.642 0 .966.708 1.9.807 2.03.097.13 1.395 2.125 3.375 2.982 2.38 1.044 2.38.695 2.81.653.43-.04 1.395-.57 1.59-1.123.195-.553.195-1.026.136-1.123-.065-.097-.24-.13-.436-.227Z"/>
+   </svg>
+
+   <!-- Text -->
+   <span class="whatsapp-text">Contact Us</span>
+</a>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.nav-item.dropdown').forEach(function (dropdown) {
+        dropdown.addEventListener('mouseenter', function () {
+            const toggle = this.querySelector('.dropdown-toggle');
+            const menu = this.querySelector('.dropdown-menu');
+            if (toggle && menu) {
+                toggle.classList.add('show');
+                menu.classList.add('show');
+            }
+        });
+
+        dropdown.addEventListener('mouseleave', function () {
+            const toggle = this.querySelector('.dropdown-toggle');
+            const menu = this.querySelector('.dropdown-menu');
+            if (toggle && menu) {
+                toggle.classList.remove('show');
+                menu.classList.remove('show');
+            }
+        });
+    });
+});
+
+
+
+// Adil Chat Bot
+
+
+ 
+function toggleChatbox() {
+  const chatbox = document.getElementById('chatbox');
+  chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+}
+
+async function sendMessage() {
+  const input = document.getElementById('userInput');
+  const chatBody = document.getElementById('chat-body');
+  const userMessage = input.value.trim();
+  if (!userMessage) return;
+
+  // User message show karo
+  const userMsgDiv = document.createElement('div');
+  userMsgDiv.className = 'msg user';
+  userMsgDiv.textContent = userMessage;
+  chatBody.appendChild(userMsgDiv);
+  input.value = '';
+
+  // Auto scroll
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  // Typing... text show karo
+  const botMsgDiv = document.createElement('div');
+  botMsgDiv.className = 'msg bot';
+  botMsgDiv.textContent = 'Typing...';
+  chatBody.appendChild(botMsgDiv);
+
+  try {
+    // 🧠 Ye line tumhare backend (localhost) se connect karti hai
+    const response = await fetch('http://localhost:3000/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+    botMsgDiv.textContent = data.reply;
+  } catch (err) {
+    console.error(err);
+    botMsgDiv.textContent = '⚠️ Server se connection nahi ho raha.';
+  }
+
+  // Auto scroll again
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+
+
+
+
+// cart item add
+
+
+  
+document.addEventListener("DOMContentLoaded", () => {
+  // Create popup
+  let popup = document.getElementById("popup");
+  if (!popup) {
+    popup = document.createElement("div");
+    popup.id = "popup";
+    popup.className = "popup";
+    document.body.appendChild(popup);
+  }
+
+  // Create sidebar (if not exists)
+  let sidebar = document.getElementById("cartSidebar");
+  if (!sidebar) {
+    sidebar = document.createElement("div");
+    sidebar.id = "cartSidebar";
+    sidebar.className = "cart-sidebar";
+    sidebar.innerHTML = `
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="closeCart" class="close-cart">✖</button>
+      </div>
+      <ul id="cartItems"></ul>
+      <div class="cart-total">
+        <strong>Total:</strong> <span id="cartTotal">Rs 0</span>
+      </div>
+    `;
+    document.body.appendChild(sidebar);
+  }
+
+  const cartLink = document.getElementById("cart-link");
+  const cartLinkMobile = document.getElementById("cart-link-mobile");
+  const cartCount = document.getElementById("cart-item-count");
+  const cartCountMobile = document.getElementById("cart-item-count-mobile");
+  const cartItemsContainer = document.getElementById("cartItems");
+  const closeBtn = document.getElementById("closeCart");
+  const cartTotalEl = document.getElementById("cartTotal");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  updateCartUI();
+
+  // Add to cart
+  document.querySelectorAll(".add-to-cart-btn").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".product-card");
+      const name = card.querySelector(".product-name")?.innerText.trim() || `Product ${index + 1}`;
+      const priceText = card.querySelector(".price")?.innerText.replace(/[^\d]/g, "") || "0";
+      const price = parseFloat(priceText);
+
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartUI();
+      showPopup(`${name} added to cart!`);
+    });
+  });
+
+  function updateCartUI() {
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    cartCount.textContent = totalItems;
+    cartCountMobile.textContent = totalItems;
+    cartTotalEl.textContent = `Rs ${totalAmount.toLocaleString()}`;
+
+    cartItemsContainer.innerHTML = "";
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <span>${item.name} - Rs ${item.price.toLocaleString()} (x${item.qty})</span>
+        <button class="remove-item" data-name="${item.name}">❌</button>
+      `;
+      cartItemsContainer.appendChild(li);
+    });
+  }
+
+  function showPopup(msg) {
+    popup.textContent = msg;
+    popup.style.display = "block";
+    popup.style.opacity = "1";
+    setTimeout(() => {
+      popup.style.opacity = "0";
+      setTimeout(() => (popup.style.display = "none"), 400);
+    }, 1000);
+  }
+
+  function toggleSidebar(forceClose = false) {
+    if (forceClose) {
+      sidebar.classList.remove("active");
+    } else {
+      sidebar.classList.toggle("active");
+    }
+  }
+
+  cartLink.addEventListener("click", e => {
+    e.preventDefault();
+    toggleSidebar();
+  });
+  cartLinkMobile.addEventListener("click", e => {
+    e.preventDefault();
+    toggleSidebar();
+  });
+  closeBtn.addEventListener("click", () => toggleSidebar(true));
+
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("remove-item")) {
+      const name = e.target.dataset.name;
+      cart = cart.filter(item => item.name !== name);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartUI();
+    }
+  });
+});
+ 
+
+
+
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

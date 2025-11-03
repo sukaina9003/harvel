@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | Harvel Electronic</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+
+    /* --- Header --- */
+    header {
+      background-color: #000;
+      color: gold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 50px;
+      border-bottom: 4px solid gold;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: gold;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: gold;
+      text-decoration: underline;
+    }
+
+    /* --- Cart Section --- */
+    .cart-container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background-color: #fff;
+    }
+
+    .cart-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #000;
+      border-bottom: 3px solid gold;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 15px 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .item-info {
+      flex: 1;
+      margin-left: 20px;
+    }
+
+    .item-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .item-brand {
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .item-price {
+      color: gold;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-input {
+      width: 50px;
+      text-align: center;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .remove-btn {
+      background-color: #000;
+      color: gold;
+      border: none;
+      padding: 7px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .remove-btn:hover {
+      background-color: gold;
+      color: #000;
+    }
+
+    /* --- Total Section --- */
+    .cart-summary {
+      text-align: right;
+      margin-top: 30px;
+      font-size: 1.1rem;
+    }
+
+    .cart-summary span {
+      font-weight: 700;
+      color: gold;
+    }
+
+    .checkout-btn {
+      background-color: #000;
+      color: gold;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background-color: gold;
+      color: #000;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 4px solid gold;
+      margin-top: 50px;
+    }
+
+    footer span {
+      color: gold;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 15px 20px;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .item-info {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .cart-summary {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="./pics folder/logo ad1.jpg" alt="Electro Home Logo">
+      <span>Harvel Electronic</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="aboutus.html">About</a>
+      <a href="contact.html">Contact Us </a>
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <div class="cart-container">
+    <div class="cart-title"> Air Conditioner Cart</div>
+
+    <!-- Sample Product 1 -->
+    <div class="cart-item">
+      <img src="pics/haier.png" alt="Haier AC">
+      <div class="item-info">
+        <p class="item-name">Haier 1.5 Ton Inverter AC</p>
+        <p class="item-brand">Brand: Haier</p>
+        <p class="item-price">Rs 137,000</p>
+      </div>
+      <div class="item-actions">
+        <input type="number" value="1" class="qty-input" min="1">
+        <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+      </div>
+    </div>
+
+    <!-- Sample Product 2 -->
+    <div class="cart-item">
+      <img src="pics/gree.png" alt="Gree AC">
+      <div class="item-info">
+        <p class="item-name">Gree 1.0 Ton Fairy Series</p>
+        <p class="item-brand">Brand: Gree</p>
+        <p class="item-price">Rs 126,500</p>
+      </div>
+      <div class="item-actions">
+        <input type="number" value="1" class="qty-input" min="1">
+        <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="cart-summary">
+      <p>Total Items: <span>2</span></p>
+      <p>Total Price: <span>Rs 263,500</span></p>
+      <button class="checkout-btn"><i class="fas fa-credit-card"></i> Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 <span>Electro Home</span> | All Rights Reserved
+  </footer>
+
+</body>
+</html>

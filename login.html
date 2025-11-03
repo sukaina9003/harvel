@@ -1,0 +1,250 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvel Electronics | Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000, #1a1a1a);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      gap: 30px;
+    }
+
+    /* Fake product sides */
+    .side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .side img {
+      width: 200px;
+      height: 200px;
+      border-radius: 20px;
+      object-fit: cover;
+      filter: brightness(0.8);
+      transition: 0.4s ease;
+      border: 2px solid gold;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+    }
+
+    .side img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Login box */
+    .login-box {
+      flex: 1;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .login-box h2 {
+      color: gold;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    .input-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      color: gold;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      border-radius: 10px;
+      color: #fff;
+      outline: none;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: gold;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-pw {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: gold;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .toggle-pw:hover {
+      color: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: gold;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #ffdb4d;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    p {
+      margin-top: 15px;
+      color: #aaa;
+    }
+
+    a {
+      color: gold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 950px) {
+      .wrapper {
+        flex-direction: column;
+      }
+      .side {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .side img {
+        width: 130px;
+        height: 130px;
+      }
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- LEFT PRODUCTS -->
+    <div class="side">
+      <img src="./pics folder/22.png" alt="AC">
+      <img src="./pics folder/21.png" alt="TV">
+    </div>
+
+    <!-- LOGIN BOX -->
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Enter your password" required />
+            <button type="button" class="toggle-pw" id="togglePassword">
+              <i class="fa fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <p>Don't have an account? <a href="register.html">Register Now</a></p>
+    </div>
+
+    <!-- RIGHT PRODUCTS -->
+    <div class="side">
+      <img src="./pics folder/pic 43.png" alt="Microwave">
+      <img src="./pics folder/pic 44.png" alt="Phone">
+    </div>
+  </div>
+
+  <!-- Password Toggle Script -->
+   
+  <script>
+     document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.getElementById('togglePassword');
+      const pwInput = document.getElementById('password');
+
+      toggleBtn.addEventListener('click', function () {
+        const type = pwInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        pwInput.setAttribute('type', type);
+        this.innerHTML = type === 'password'
+          ? '<i class="fa fa-eye"></i>'
+          : '<i class="fa fa-eye-slash"></i>';
+      });
+    });
+
+  </script>
+</body>
+</html>

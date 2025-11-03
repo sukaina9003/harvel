@@ -1,0 +1,561 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Haier 24HDZ 2.0 Ton Inverter Floor Standing AC</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* ---------- Reset & base ---------- */
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:#ffffff; color:#111}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    background:#000;color:yellow;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;
+    border-bottom:4px solid yellow;
+  }
+  .brand{display:flex;gap:12px;align-items:center}
+  .brand .logo{
+    height:34px;width:34px;border-radius:6px;background:linear-gradient(135deg, yellow 0,yellow 60%);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000}
+  .brand h1{font-size:18px;color:#fff;font-weight:600}
+  .top-actions{display:flex;gap:12px;align-items:center}
+  .top-actions .cart-bubble{background:yellow;color:#000;padding:6px 10px;border-radius:24px;font-weight:700}
+
+  /* ---------- Container ---------- */
+  .container{max-width:1180px;margin:28px auto;padding:0 18px}
+
+  /* ---------- Breadcrumb ---------- */
+  .breadcrumb{font-size:13px;color:#666;margin-bottom:12px}
+  .breadcrumb a{color:#444}
+
+  /* ---------- Product area ---------- */
+  .product-wrap{
+    background:#fff;border:2px solid yellow;border-radius:12px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.06);
+    display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;
+  }
+
+  /* Left column image gallery */
+  .gallery{flex:0 0 360px;min-width:260px}
+  .main-image{width:100%;border-radius:10px;border:1px solid #eee;padding:12px;background:#fafafa;display:flex;align-items:center;justify-content:center}
+  .main-image img{max-width:100%;height:auto;display:block}
+  .thumbs{display:flex;gap:8px;margin-top:12px}
+  .thumbs img{width:62px;height:62px;object-fit:contain;border-radius:6px;border:1px solid #eee;padding:6px;background:#fff;cursor:pointer}
+
+  /* Right column info */
+  .info{flex:1;min-width:300px}
+  .info h2{font-size:22px;color:#111;margin-bottom:8px}
+  .info p.meta{color:#666;font-size:13px;margin-bottom:8px}
+  .rating{display:flex;gap:8px;align-items:center;color:rgb(232, 232, 9);margin-bottom:8px}
+  .stock{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:16px;background:#e8f9ec;color:#046d21;font-weight:600;font-size:13px}
+  .sku{color:#777;font-size:13px;margin-top:8px}
+
+  .price-row{display:flex;gap:12px;align-items:center;margin:18px 0}
+  .price-current{font-size:20px;color:black;font-weight:800}
+  .price-old{color:#888;text-decoration:line-through}
+
+  /* quantity + buttons */
+  .controls{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .qty {
+    display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:10px;overflow:hidden;
+  }
+  .qty button{background:#fff;border:0;padding:8px 12px;cursor:pointer;font-weight:700}
+  .qty input{width:56px;text-align:center;border:0;padding:8px;font-weight:600}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:30px;font-weight:700;cursor:pointer;border:0;
+    transition:all .18s ease;
+  }
+  .btn.add{background:#000;color:#fff;border:2px solid #000}
+  .btn.add:hover{background:gold;color:#000}
+  .btn.download{background:gold;color:#000;border:2px solid yellow}
+  .btn.download:hover{background:#000;color:#d4af37}
+
+  /* small actions row */
+  .small-actions{display:flex;gap:12px;margin-top:12px;align-items:center;color:#666;font-size:14px}
+  .small-actions a{color:#666}
+
+  /* Tabs section */
+  .tabs{margin-top:24px;border-top:1px solid #eee;padding-top:18px}
+  .tab-buttons{display:flex;gap:8px;border-bottom:1px solid #eee;padding-bottom:12px}
+  .tab-buttons button{background:transparent;border:0;padding:10px 14px;font-weight:700;cursor:pointer;border-radius:8px;color:#444}
+  .tab-buttons button.active{background:#000;color:#fff}
+  .tab-content{padding:16px 4px;color:#333;font-size:14px}
+
+  /* Features box */
+  .features{margin-top:18px;background:#000;color:#fff;padding:18px;border-radius:10px}
+  .features h4{color:gold;margin-bottom:10px}
+  .features ul{list-style:none;padding-left:0}
+  .features li{margin-bottom:8px}
+
+  /* Related products */
+  .related{margin-top:26px}
+  .related h3{color:#222;margin-bottom:12px}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+  .card{
+    border-radius:10px;border:1px solid #eee;padding:12px;background:#fff;display:flex;flex-direction:column;gap:10px;align-items:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.04)
+  }
+  .card img{width:100%;height:110px;object-fit:contain}
+  .card .c-name{font-weight:700;font-size:14px;color:#111;text-align:center}
+  .card .c-price{color:#d4af37;font-weight:800}
+  .card .c-btn{margin-top:auto;display:inline-block;padding:8px 14px;border-radius:20px;background:gold;color:#000;font-weight:700}
+
+  /* Footer */
+  .footer {
+  background-color: #000;
+  color: #f5f5f5;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Title */
+.footer-title {
+  color: #FFD700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Footer Items */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-item:hover {
+  color: #FFD700;
+}
+
+.footer-item i {
+  color: #FFD700;
+}
+
+/* Social Icons */
+.footer-social p {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  background: #111;
+  border: 1px solid #FFD700;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background: #FFD700;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Center Links */
+.footer-center h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li {
+  margin: 10px 0;
+}
+
+.footer-center ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-center ul li a:hover {
+  color: #FFD700;
+  padding-left: 5px;
+}
+
+/* Subscribe */
+.footer-right h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-right p {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.subscribe-form button {
+  background: #FFD700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+ /*  */
+ /* make footer a positioned container */
+.footer {
+  position: relative; /* already present? ensure this */
+  padding-bottom: 50px; /* give space so credit doesn't overlap content */
+}
+
+/* place credit exactly at bottom center of the footer */
+.footer-credit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;          /* distance from footer bottom; adjust to taste */
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #777;           /* keeps existing style */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    min-width: 100%;
+  }
+
+  .footer-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input, .subscribe-form button {
+    width: 100%;
+  }
+}
+
+  /* responsive */
+  @media (max-width:900px){
+    .product-wrap{padding:18px}
+    .gallery{flex-basis:100%;order:1}
+    .info{flex-basis:100%;order:2}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand">
+       
+      <div>
+        <h1 style="margin:0;color:#fff;font-size:20px">ElectroHome</h1>
+        <div style="font-size:12px;color:#fff">Home Appliances • Pakistan</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div style="font-size:13px;color:#fff">Fast Shipping</div>
+      <div class="cart-bubble">Rs0</div>
+    </div>
+  </header>
+
+  <!-- CONTAINER -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="#">Home</a> &nbsp;/&nbsp; <a href="#">Air Conditioners</a> &nbsp;/&nbsp; <strong>Haier 24HDZ 2.0 Ton</strong>
+    </div>
+
+    <section class="product-wrap">
+
+      <!-- LEFT: IMAGES -->
+      <div class="gallery">
+        <div class="main-image">
+          <img id="mainImg" src="https://electrohome.pk/wp-content/uploads/2024/05/Haier-24HDZ-Floor-Standing-AC.jpg" alt="Haier 24HDZ">
+        </div>
+        <div class="thumbs">
+          <img src="./pics folder/pic 2.png" onclick="swapImg(this)">
+          <img src="https://electrohome.pk/wp-content/uploads/2024/05/Haier-24HDZ-Floor-Standing-AC.jpg" onclick="swapImg(this)">
+          <img src="https://electrohome.pk/wp-content/uploads/2024/05/Haier-24HDZ-Floor-Standing-AC.jpg" onclick="swapImg(this)">
+        </div>
+      </div>
+
+      <!-- RIGHT: INFO -->
+      <div class="info">
+        <h2>Haier 24HDZ 2.0 Ton Inverter Floor Standing Air Conditioner White</h2>
+        <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-stroke"></i> (45 Reviews)</div>
+
+        <div class="stock"><i class="fas fa-check-circle"></i> In stock</div>
+        <div class="sku">SKU: <strong>00006478</strong></div>
+
+        <div class="price-row">
+          <div class="price-current">Rs305,000</div>
+          <div class="price-old">Rs350,000</div>
+        </div>
+
+        <!-- quantity + buttons -->
+        <div class="controls">
+          <div class="qty" aria-label="Quantity selector">
+            <button type="button" id="decQty">-</button>
+            <input type="text" id="qtyInput" value="1" />
+            <button type="button" id="incQty">+</button>
+          </div>
+
+          <!-- Add to cart (anchor that looks like button) -->
+          <a href="cart1.html" id="addCartBtn" class="btn add" title="Add to cart"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
+
+          <!-- Download product details -->
+          <a href="Haier-24HDZ-Details.pdf" class="btn download" download> <i class="fa fa-file-download"></i> Download Product Details</a>
+        </div>
+
+        <div class="small-actions">
+          <a href="#"><i class="fa fa-heart"></i> Add to wishlist</a>
+          <a href="#"><i class="fa fa-share-alt"></i> Share</a>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab-buttons" role="tablist">
+            <button class="tab-btn active" data-tab="desc">DESCRIPTION</button>
+            <button class="tab-btn" data-tab="info">ADDITIONAL INFORMATION</button>
+            <button class="tab-btn" data-tab="rev">REVIEWS (0)</button>
+          </div>
+          <div class="tab-content" id="desc">
+            <p><strong>Overview:</strong> The Haier 24HDZ 2.0 Ton Inverter Floor Standing Air Conditioner delivers powerful cooling & efficient performance for large rooms and open floor plans. It features inverter technology, Wi-Fi control, hidden LED display and self-cleaning function for healthier air.</p>
+            <p>Perfect for living rooms and offices — quiet, stylish and reliable.</p>
+          </div>
+          <div class="tab-content" id="info" style="display:none">
+            <ul style="list-style:disc;padding-left:18px;color:#333">
+              <li>Cooling Capacity: 2.0 Ton (24000 BTU)</li>
+              <li>Power Input: 820-2670 Watts</li>
+              <li>Refrigerant: R410A</li>
+              <li>Air Circulation: 1200 m³/h</li>
+              <li>Compressor Warranty: 10 years</li>
+            </ul>
+          </div>
+          <div class="tab-content" id="rev" style="display:none">
+            <p>No reviews yet. Be the first to review this product.</p>
+          </div>
+        </div>
+
+        <!-- Features box -->
+        <div class="features" style="margin-top:18px">
+          <h4>ElectroHome Benefits</h4>
+          <ul>
+            <li>✔ Invoice Available</li>
+            <li>✔ Secure Payments</li>
+            <li>✔ 365 Days Help Desk</li>
+          </ul>
+        </div>
+
+      </div> <!-- end info -->
+
+      <!-- end product-wrap -->
+    </section>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="related">
+      <h3>Related Products</h3>
+      <div class="related-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="https://electrohome.pk/wp-content/uploads/2024/05/haier-2-ton.jpg" alt="">
+          <div class="c-name">Haier 2 Ton Inverter AC</div>
+          <div class="c-price">Rs206,000</div>
+          <a href="#" class="c-btn">Add To Cart</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <img src="https://electrohome.pk/wp-content/uploads/2024/05/haier-cabinet.jpg" alt="">
+          <div class="c-name">Haier Inverter Cabinet AC</div>
+          <div class="c-price">Rs287,000</div>
+          <a href="#" class="c-btn">Add To Cart</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <img src="https://electrohome.pk/wp-content/uploads/2024/05/panasonic-1-ton.jpg" alt="">
+          <div class="c-name">Panasonic 1.0 Ton</div>
+          <div class="c-price">Rs149,000</div>
+          <a href="#" class="c-btn">Add To Cart</a>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+          <img src="https://electrohome.pk/wp-content/uploads/2024/05/gree-cabinet.jpg" alt="">
+          <div class="c-name">Gree Inverter Cabinet</div>
+          <div class="c-price">Rs377,000</div>
+          <a href="cart1.html" class="c-btn">Add To Cart</a>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- container -->
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+  <div class="footer-container">
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2 class="footer-title">Harvel Electronics</h2>
+
+      <div class="footer-item">
+        <i class="fas fa-home"></i>
+        <span class="footer-text">Main Shara-e-Faisal Business Aveneu 75760 Karachi Pakistan</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-clock"></i>
+        <span class="footer-text">Mon – Sat: 9:00 AM – 10:00 PM</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-phone-alt"></i>
+        <span class="footer-text">+92 3480360061</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-envelope"></i>
+        <span class="footer-text">jbadil007@gmail.com</span>
+      </div>
+
+      <div class="footer-social">
+        <p>Follow Us:</p>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Shop by Brands</a></li>
+        <li><a href="#">Customer Reviews</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE (SUBSCRIBE) -->
+    <div class="footer-right">
+      <h3>Subscribe Now</h3>
+      <p>Get updates on latest offers & new arrivals.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="footer-credit">© 2025 Harvel Electronics | Designed by Adil</p>
+    </div>
+  </div>
+</footer>
+ 
+
+
+
+<script>
+  /* Image swap */
+  function swapImg(el){
+    document.getElementById('mainImg').src = el.src;
+  }
+
+  /* Quantity logic */
+  const dec = document.getElementById('decQty');
+  const inc = document.getElementById('incQty');
+  const qty = document.getElementById('qtyInput');
+
+  dec && dec.addEventListener('click', ()=> {
+    let v = parseInt(qty.value)||1; v = Math.max(1,v-1); qty.value = v;
+  });
+  inc && inc.addEventListener('click', ()=> {
+    let v = parseInt(qty.value)||1; qty.value = v+1;
+  });
+
+  /* Tabs */
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const t = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-content').forEach(tc=>tc.style.display='none');
+      document.getElementById(t).style.display = 'block';
+    });
+  });
+
+  /* Optional: attach qty to cart link query (so cart page can read it) */
+  const addCart = document.getElementById('addCartBtn');
+  addCart && addCart.addEventListener('click', function(e){
+    // Build url with qty param — cart.html?product=haier-24hdz&qty=2
+    const q = parseInt(qty.value)||1;
+    // Replace href to include query
+    this.href = 'cart.html?product=haier-24hdz&qty=' + encodeURIComponent(q);
+    // allow navigation as normal (anchor)
+  });
+</script>
+
+</body>
+</html>

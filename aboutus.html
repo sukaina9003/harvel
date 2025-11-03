@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>About Us | Harvel Electronic</title>
+
+  <style>
+    /* ======= BASIC THEME ======= */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #222;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 60px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      color: gold;
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    /* ======= ABOUT SECTION ======= */
+    .about-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 80px;
+      gap: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+      line-height: 1.8;
+    }
+
+    .about-text h2 {
+      color: black;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .about-text h3 {
+      margin-top: 30px;
+      color: #000;
+      font-size: 1.3rem;
+    }
+
+    .about-image {
+      flex: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  
+    /* FOOTER SECTION */
+    .footer {
+  background-color: #000;
+  color: #f5f5f5;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Title */
+.footer-title {
+  color: #FFD700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Footer Items */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-item:hover {
+  color: #FFD700;
+}
+
+.footer-item i {
+  color: #FFD700;
+}
+
+/* Social Icons */
+.footer-social p {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  background: #111;
+  border: 1px solid #FFD700;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background: #FFD700;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Center Links */
+.footer-center h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li {
+  margin: 10px 0;
+}
+
+.footer-center ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-center ul li a:hover {
+  color: #FFD700;
+  padding-left: 5px;
+}
+
+/* Subscribe */
+.footer-right h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-right p {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.subscribe-form button {
+  background: #FFD700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+ /*  */
+ /* make footer a positioned container */
+.footer {
+  position: relative; /* already present? ensure this */
+  padding-bottom: 50px; /* give space so credit doesn't overlap content */
+}
+
+/* place credit exactly at bottom center of the footer */
+.footer-credit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;          /* distance from footer bottom; adjust to taste */
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #777;           /* keeps existing style */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    min-width: 100%;
+  }
+
+  .footer-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input, .subscribe-form button {
+    width: 100%;
+  }
+}
+
+    /* ======= RESPONSIVE ======= */
+    @media (max-width: 900px) {
+      .about-section {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+
+      .about-text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="logo">
+      <img src="./pics folder/logo ad1.jpg" alt="Electro Home Logo">
+      <h1>Harvel Electronic</h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+    </nav>
+  </header>
+
+  <!-- ======= ABOUT SECTION ======= -->
+  <section class="about-section">
+    <div class="about-text">
+      <h2>ABOUT US</h2>
+      <p>
+        Electro Home is a premium home appliances store in Pakistan, renowned for its extensive range of consumer electronics and home appliances from leading brands. With a commitment to competitive pricing, diverse selection, and exceptional customer service, we cater to both offline and online shoppers. Our longstanding expertise in the industry has enabled us to cultivate relationships with over 200 reputable brands, ensuring our customers receive only genuine products.
+      </p>
+
+      <h3>Best Quality</h3>
+      <p>
+        Despite offering a wide range of home appliances all over Pakistan, we never compromise on quality. Whether you are buying local or imported products, we ensure that our product range complies with international safety and quality standards.
+      </p>
+
+      <h3>Fastest Delivery</h3>
+      <p>
+        Do you want to buy a product of your choice and have it delivered as quickly as possible? Electro Home strives to deliver all home appliances in the shortest time possible.
+      </p>
+
+      <h3>Our Vision</h3>
+      <p>
+        To provide our customers the best online buying experience from start till the end; be the part of ongoing E-commerce revolution in Pakistan and we intend to do this by giving best variety, price and convenience to our customer.
+      </p>
+
+      <h3>Our Mission</h3>
+      <p>
+        We provide one-stop solution to our customers; in-stores and online by providing 100% genuine products at best prices along with quality after-sales services to our respective customers.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="./pics folder/about pic.jpg" alt="About Electro Home">
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  
+   <footer class="footer">
+  <div class="footer-container">
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2 class="footer-title">Harvel Electronics</h2>
+
+      <div class="footer-item">
+        <i class="fas fa-home"></i>
+        <span class="footer-text">Main Shara-e-Faisal Business Aveneu 75760 Karachi Pakistan</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-clock"></i>
+        <span class="footer-text">Mon – Sat: 9:00 AM – 10:00 PM</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-phone-alt"></i>
+        <span class="footer-text">+92 3480360061</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-envelope"></i>
+        <span class="footer-text">jbadil007@gmail.com</span>
+      </div>
+
+      <div class="footer-social">
+        <p>Follow Us:</p>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="shopbybrand.html">Shop by Brands</a></li>
+        <li><a href="customerreviews.html">Customer Reviews</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE (SUBSCRIBE) -->
+    <div class="footer-right">
+      <h3>Subscribe Now</h3>
+      <p>Get updates on latest offers & new arrivals.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="footer-credit">© 2025 Harvel Electronics | Designed by Adil</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

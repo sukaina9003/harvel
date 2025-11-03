@@ -1,0 +1,638 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Harvel Electronic</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      border-bottom: 4px solid gold;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 55px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      color: gold;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    /* CONTACT SECTION */
+    .contact-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 80px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .contact-info.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .contact-info h2 {
+      color: black;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .info-box {
+      display: flex;
+      align-items: center;
+      background: #000;
+      color: gold;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin: 10px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .info-box i {
+      font-size: 1.4rem;
+      margin-right: 15px;
+    }
+
+    /* FORM STYLING */
+    .contact-form {
+      flex: 1;
+      min-width: 320px;
+      background: #fafafa;
+      border: 2px solid gold;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .contact-form.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .contact-form h3 {
+      color: #000;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .contact-form label {
+      display: block;
+      font-weight: 600;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      resize: none;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+    }
+
+    .contact-form button {
+      margin-top: 20px;
+      background-color: #000;
+      color: #fff;
+      border: 2px solid #000;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: gold;
+      color: #000;
+    }
+
+    /* SUCCESS MESSAGE POPUP */
+    .success-popup {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background-color: gold;
+      color: #000;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: none;
+      font-weight: 600;
+      z-index: 1000;
+    }
+
+    /* MAP */
+     .map-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+}
+
+.map-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  max-width: 1000px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .map-section {
+    padding: 40px 10px;
+  }
+
+  .map-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+}
+
+    /* FOOTER */
+    
+    
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-container {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .contact-form, .contact-info {
+        width: 100%;
+      }
+    }
+
+
+    /* FOOTER SECTION  */
+
+    .footer {
+  background-color: #000;
+  color: #f5f5f5;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Title */
+.footer-title {
+  color: #FFD700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Footer Items */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-item:hover {
+  color: #FFD700;
+}
+
+.footer-item i {
+  color: #FFD700;
+}
+
+/* Social Icons */
+.footer-social p {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  background: #111;
+  border: 1px solid #FFD700;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background: #FFD700;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Center Links */
+.footer-center h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li {
+  margin: 10px 0;
+}
+
+.footer-center ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-center ul li a:hover {
+  color: #FFD700;
+  padding-left: 5px;
+}
+
+/* Subscribe */
+.footer-right h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.footer-right p {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.subscribe-form button {
+  background: #FFD700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+ /*  */
+ /* make footer a positioned container */
+.footer {
+  position: relative; /* already present? ensure this */
+  padding-bottom: 50px; /* give space so credit doesn't overlap content */
+}
+
+/* place credit exactly at bottom center of the footer */
+.footer-credit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;          /* distance from footer bottom; adjust to taste */
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #777;           /* keeps existing style */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    min-width: 100%;
+  }
+
+  .footer-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input, .subscribe-form button {
+    width: 100%;
+  }
+}
+  </style>
+
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="./pics folder/logo ad1.jpg" alt="Electro Home Logo" />
+      <h1>Harvel Electronic</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <!-- SUCCESS MESSAGE -->
+  <div id="successPopup" class="success-popup">
+    ✅ Message sent successfully! We'll get back to you soon.
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-container">
+    <!-- LEFT SIDE INFO -->
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p>
+        Have questions, feedback, or need support?  
+        Get in touch with our team — we’ll respond as soon as possible.
+      </p>
+
+      <div class="info-box">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <strong>Address:</strong><br />
+          123 Business Street, Karachi, Pakistan
+        </div>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-phone"></i>
+        <div>
+          <strong>Phone:</strong><br />
+          +92 3480 360061
+        </div>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <strong>Email:</strong><br />
+          jbadil007@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <form
+      class="contact-form"
+      id="contactForm"
+      action="https://formspree.io/f/xyzbzebz"
+      method="POST"
+    >
+      <h3>Send Us a Message</h3>
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="_replyto" required />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" />
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+    </form>
+  </section>
+
+  <!-- MAP SECTION -->
+  <div class="map-section">
+    <iframe
+      src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.0485963526617!2d67.06929667433954!3d24.862189777928112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33ea2204eef55%3A0xd30b472ad63172d8!2sBusiness%20Avenue%2C%20Shahrah-e-Faisal%20Block%206%20PECHS%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1760926930866!5m2!1sen!2s"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <h2 class="footer-title">Harvel Electronics</h2>
+
+      <div class="footer-item">
+        <i class="fas fa-home"></i>
+        <span class="footer-text">Main Shara-e-Faisal Business Aveneu 75760 Karachi Pakistan</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-clock"></i>
+        <span class="footer-text">Mon – Sat: 9:00 AM – 10:00 PM</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-phone-alt"></i>
+        <span class="footer-text">+92 3480360061</span>
+      </div>
+
+      <div class="footer-item">
+        <i class="fas fa-envelope"></i>
+        <span class="footer-text">jbadil007@gmail.com</span>
+      </div>
+
+      <div class="footer-social">
+        <p>Follow Us:</p>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="shopbybrand.html">Shop by Brands</a></li>
+        <li><a href="customerreviews.html">Customer Reviews</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE (SUBSCRIBE) -->
+    <div class="footer-right">
+      <h3>Subscribe Now</h3>
+      <p>Get updates on latest offers & new arrivals.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="footer-credit">© 2025 Harvel Electronics | Designed by Adil</p>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+    // Fade-in animation when scrolling
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    });
+
+    document.querySelectorAll(".contact-info, .contact-form").forEach((el) => observer.observe(el));
+
+    // Form submission success popup
+    const form = document.getElementById("contactForm");
+    const popup = document.getElementById("successPopup");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        popup.style.display = "block";
+        form.reset();
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 4000);
+      } else {
+        alert("Oops! Something went wrong. Try again.");
+      }
+    });
+  </script>
+</body>
+</html>
